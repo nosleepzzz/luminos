@@ -41,11 +41,14 @@ command -v start-hyprland >/dev/null
 test -f /usr/share/wayland-sessions/luminos-glass.desktop
 grep -q 'Session=luminos-glass' /etc/sddm.conf.d/luminos.conf
 grep -q 'Current=luminos' /etc/sddm.conf.d/luminos.conf
-grep -q 'bind = ALT, E' /etc/skel/.config/hypr/hyprland.conf
-grep -q 'lumin-menu' /etc/skel/.config/waybar/config
 test -f /usr/share/sddm/themes/luminos/Main.qml
 test -f /usr/share/pixmaps/luminos.svg
-! grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' /etc/skel/.config/hypr/hyprland.conf
+grep -q 'bind = ALT, E' /etc/skel/.config/hypr/hyprland.conf
+grep -q 'lumin-menu' /etc/skel/.config/waybar/config
+if grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' /etc/skel/.config/hypr/hyprland.conf; then
+  echo "ERROR: hyprland.conf still contains removed pseudotile option" >&2
+  exit 1
+fi
 loginctl enable-linger lumin 2>/dev/null || true
 
 # Live user home = skel (waybar menu + hypr config)
