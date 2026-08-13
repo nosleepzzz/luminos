@@ -50,6 +50,11 @@ fi
 rm -rf "${WORK_DIR}"
 mkarchiso -v -w "${WORK_DIR}" -o "${OUT_DIR}" "${PROJECT_DIR}/iso"
 
+# mkarchiso runs as root; hand artifacts back to the invoking user when possible
+if [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
+  chown -R "${SUDO_USER}:${SUDO_USER}" "${OUT_DIR}" "${PROJECT_DIR}/.build" 2>/dev/null || true
+fi
+
 echo "=========================================================="
 echo "  ISO build finished. Check ${OUT_DIR}"
 echo "=========================================================="
