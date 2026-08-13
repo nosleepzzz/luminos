@@ -10,7 +10,8 @@ iso_application="LuminOS Glass Live ISO (pre-alpha)"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="luminos"
 buildmodes=('iso')
-bootmodes=('bios.syslinux' 'uefi.systemd-boot')
+# Match CachyOS-Live-ISO: GRUB for UEFI is more reliable than systemd-boot here
+bootmodes=('bios.syslinux' 'uefi.grub')
 arch="x86_64"
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
