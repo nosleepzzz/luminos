@@ -31,9 +31,32 @@ ln -sfn /usr/lib/systemd/system/power-profiles-daemon.service \
   "${SYS}/multi-user.target.wants/power-profiles-daemon.service"
 ln -sfn /usr/lib/systemd/system/sddm.service \
   "${SYS}/display-manager.service"
+ln -sfn /usr/lib/systemd/system/graphical.target \
+  "${SYS}/default.target"
+# Live ISO: never run interactive firstboot (also set systemd.firstboot=0 on cmdline)
+ln -sfn /dev/null "${SYS}/systemd-firstboot.service"
+# Debug / rescue access on live image
+mkdir -p "${SYS}/multi-user.target.wants"
+ln -sfn /usr/lib/systemd/system/sshd.service \
+  "${SYS}/multi-user.target.wants/sshd.service"
 
 # Ensure sudoers dir mode
 chmod 750 "${AIROOTFS}/etc/sudoers.d" 2>/dev/null || true
 chmod 440 "${AIROOTFS}/etc/sudoers.d/g_wheel" 2>/dev/null || true
+
+# Default timezone for live image
+if [[ -e /usr/share/zoneinfo/UTC ]]; then
+  ln -sfn /usr/share/zoneinfo/UTC "${AIROOTFS}/etc/localtime"
+fi
+# Empty machine-id is correct for live images (regenerated at boot); firstboot is masked above
+: > "${AIROOTFS}/etc/machine-id"
+
+# Live user password: lumin (empty PAM often blocks SDDM; autologin is primary path)
+if command -v chpasswd >/dev/null 2>&1; then
+  echo 'lumin:lumin' | chpasswd -R "${AIROOTFS}"
+elif command -v openssl >/dev/null 2>&1; then
+  hash="$(openssl passwd -6 lumin)"
+  sed -i "s|^lumin:[^:]*:|lumin:${hash}:|" "${AIROOTFS}/etc/shadow"
+fi
 
 echo "==> airootfs prepare complete"

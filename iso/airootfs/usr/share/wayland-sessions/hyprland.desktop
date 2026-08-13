@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Hyprland
+Comment=LuminOS Glass (Hyprland)
+Exec=Hyprland
+Type=Application
+DesktopNames=Hyprland
+X-GDM-SessionSupportsLogin=true
