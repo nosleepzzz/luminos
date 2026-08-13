@@ -80,6 +80,7 @@ sddm
 qt6-wayland
 polkit
 polkit-gnome
+seatd
 xdg-desktop-portal-gtk
 xdg-user-dirs
 xdg-utils

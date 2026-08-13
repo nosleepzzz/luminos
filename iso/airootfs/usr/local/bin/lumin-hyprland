@@ -1,23 +1,24 @@
 #!/bin/bash
-# VM-safe Hyprland entrypoint — always use start-hyprland (never bare Hyprland).
+# Only supported Glass session entrypoint for the live ISO.
+# Must use start-hyprland (bare "Hyprland" aborts on current packaging).
 set -euo pipefail
 
-export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
-export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-Hyprland}"
+uid="$(id -u)"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${uid}}"
+mkdir -p "${XDG_RUNTIME_DIR}"
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
 
-# wlroots / mesa software path (VirtualBox without working GL)
-export WLR_RENDERER_ALLOW_SOFTWARE="${WLR_RENDERER_ALLOW_SOFTWARE:-1}"
-export WLR_NO_HARDWARE_CURSORS="${WLR_NO_HARDWARE_CURSORS:-1}"
+export WLR_RENDERER_ALLOW_SOFTWARE=1
+export WLR_NO_HARDWARE_CURSORS=1
 export WLR_RENDERER="${WLR_RENDERER:-pixman}"
-export LIBGL_ALWAYS_SOFTWARE="${LIBGL_ALWAYS_SOFTWARE:-1}"
+export LIBGL_ALWAYS_SOFTWARE=1
 export GALLIUM_DRIVER="${GALLIUM_DRIVER:-llvmpipe}"
+export AQ_NO_MODIFIERS=1
 
-# Aquamarine (newer Hyprland) — be permissive in VMs
-export AQ_NO_MODIFIERS="${AQ_NO_MODIFIERS:-1}"
-
-if command -v start-hyprland >/dev/null 2>&1; then
-  exec start-hyprland "$@"
+if ! command -v start-hyprland >/dev/null 2>&1; then
+  echo "lumin-hyprland: start-hyprland not found" >&2
+  exit 1
 fi
 
-# Fallback for older packaging
-exec Hyprland "$@"
+exec start-hyprland "$@"

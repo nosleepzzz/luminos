@@ -1,8 +1,13 @@
 Welcome to LuminOS Glass (pre-alpha)
 
-  Flavor:  Glass (Hyprland, lean package set)
-  Base:    CachyOS / Arch (linux-cachyos)
-  Phase 2: Windows app support not shipped yet
+  Flavor: Glass (Hyprland, lean package set)
+  Base:   CachyOS / Arch (linux-cachyos)
+
+  Desktop tips (VirtualBox):
+    - Click "LuminOS" on the top bar for the app menu
+    - Or Alt+D (menu) / Alt+Return (terminal)
+    - Win/Super key usually does NOT work in VirtualBox
+    - Login if prompted: lumin / lumin
 
   Try: lumin-fetch
        lumin-mgr --status
