@@ -57,7 +57,23 @@ What the script does:
 2. Runs `tools/prepare-airootfs.sh` (wallpaper, live user home, systemd enable symlinks)
 3. Invokes `mkarchiso` on `iso/`
 
-## SourceForge uploads (optional, later)
+Verify the live initramfs includes Archiso hooks (required for Switch Root):
+
+```bash
+# After a build, on the build host:
+lsiso="$(echo out/luminos-glass-*.iso)"
+mkdir -p /tmp/lumin-iso && sudo mount -o loop "$lsiso" /tmp/lumin-iso
+ls -la /tmp/lumin-iso/luminos/boot/x86_64/
+# Expect: vmlinuz-linux-cachyos and initramfs-linux-cachyos.img
+sudo umount /tmp/lumin-iso
+```
+
+If boot fails at **Switch Root**, the initramfs was built without `archiso` hooks.
+Confirm these exist in the profile before rebuilding:
+
+- `iso/airootfs/etc/mkinitcpio.conf.d/archiso.conf`
+- `iso/airootfs/etc/mkinitcpio.d/linux-cachyos.preset`
+
 
 After a verified ISO exists:
 
