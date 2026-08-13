@@ -3,174 +3,245 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LuminOS - Universal Ultra-Lightweight OS with Windows App Execution</title>
+  <title>LuminOS — Universal Ultra-Lightweight OS & Gaming Engine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header Navbar -->
+  <!-- Background Glow FX -->
+  <div class="bg-glow-orb orb-1"></div>
+  <div class="bg-glow-orb orb-2"></div>
+
+  <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="nav-brand">
-      <img src="assets/lumin-logo.jpg" alt="LuminOS Logo" class="brand-logo" />
-      <span class="brand-title">LuminOS</span>
-    </div>
-    <div class="nav-links">
-      <a href="#flavors">Flavors</a>
-      <a href="#features">Features</a>
-      <a href="#benchmarks">Benchmarks</a>
-      <a href="#download">Download ISO</a>
-      <a href="#docs">Docs</a>
-      <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="nav-btn-sim">SourceForge ↗</a>
-      <a href="https://github.com/nosleepzzz/luminos" target="_blank" class="nav-btn-sim">GitHub Repo ↗</a>
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <img src="assets/lumin-logo.jpg" alt="LuminOS Logo" class="brand-logo" />
+        <span class="brand-name">Lumin<span>OS</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#flavors">Flavors</a>
+        <a href="#gaming">Gaming Engine</a>
+        <a href="#features">Features</a>
+        <a href="#tools">System Tools</a>
+        <a href="#download" class="nav-btn-primary">Download ISO</a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
   <header class="hero">
-    <div class="hero-content">
-      <div class="badge-distrowatch">🌟 DistroWatch Qualified Release Candidate</div>
-      <h1>Luminous Speed.<br>Run Windows Apps Anywhere.</h1>
-      <p class="hero-sub">
-        The universal, ultra-lightweight Linux distribution for laptops, low-spec PCs, gaming rigs, and office desktops. 
-        Featuring an idle RAM footprint starting under <strong>280 MB – 420 MB</strong>, BORE kernel tuning, 
-        Bubblewrap security sandboxing, and seamless Windows application execution out of the box.
-      </p>
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>v1.0.0-rc1 Official Release</span>
+        </div>
+        <h1 class="hero-title">
+          Weightless Speed.<br>
+          <span class="text-gradient">Zero Windows Bloat.</span>
+        </h1>
+        <p class="hero-description">
+          The universal, ultra-lightweight Linux operating system engineered for laptops, low-spec PCs, and high-performance gaming rigs. Featuring sub-<strong>280MB – 420MB idle RAM</strong>, BORE kernel scheduling, Bubblewrap security sandboxing, and out-of-the-box Windows application execution.
+        </p>
 
-      <div class="hero-ctas">
-        <a href="#download" class="cta-primary">Download LuminOS ISO (1.5 GB)</a>
-        <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="cta-secondary">SourceForge Mirror ↗</a>
-        <a href="https://github.com/nosleepzzz/luminos" target="_blank" class="cta-secondary">View Source Code ↗</a>
+        <div class="hero-actions">
+          <a href="#download" class="btn btn-gold">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download ISO (1.5 GB)
+          </a>
+          <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="btn btn-glass">
+            ⚡ SourceForge Mirror ↗
+          </a>
+          <a href="https://github.com/nosleepzzz/luminos" target="_blank" class="btn btn-outline">
+            GitHub Source ↗
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-val">&lt; 280 MB</span>
+            <span class="stat-lbl">Lite Idle RAM</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">0% Jitter</span>
+            <span class="stat-lbl">BORE Scheduler</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-val">DXVK 2.4</span>
+            <span class="stat-lbl">Vulkan Translation</span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="hero-preview">
-      <img src="assets/lumin-wallpaper.jpg" alt="LuminOS Desktop Wallpaper" class="preview-img" />
+
+      <div class="hero-visual">
+        <div class="wallpaper-wrapper">
+          <img src="assets/lumin-wallpaper.jpg" alt="LuminOS Desktop Wallpaper" class="hero-wallpaper" />
+          <div class="glass-overlay-card">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="fetch-preview">
+              <span class="c-gold">user@luminos</span>:<span class="c-blue">~</span>$ lumin-fetch<br>
+              <span class="c-gold">OS:</span> LuminOS v1.0.0-rc1 x86_64<br>
+              <span class="c-gold">Kernel:</span> 6.10.5-lumin-BORE<br>
+              <span class="c-gold">Uptime:</span> 4 mins<br>
+              <span class="c-gold">Memory:</span> 278MiB / 15982MiB
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
   <!-- Flavors Section -->
   <section id="flavors" class="section">
-    <h2 class="section-title">Choose Your LuminOS Flavor</h2>
-    <p class="section-sub">4 tailored editions engineered for every hardware use-case.</p>
+    <div class="section-header">
+      <h2 class="section-title">4 Official LuminOS Flavors</h2>
+      <p class="section-desc">Tailored operating system profiles engineered for every hardware use-case.</p>
+    </div>
 
-    <div class="flavors-grid">
-      <div class="flavor-card flagship">
-        <div class="flavor-badge">FLAGSHIP</div>
-        <div class="flavor-icon">🍏</div>
+    <div class="grid-4">
+      <div class="card flavor-card featured">
+        <div class="card-tag">FLAGSHIP</div>
+        <div class="card-icon">🍏</div>
         <h3>Glass Edition</h3>
-        <div class="ram-badge">RAM: ~420 MB</div>
-        <p>macOS Sonoma Glass Wayland desktop with multi-touch touchpad gestures and dynamic top bar.</p>
-        <ul class="flavor-list">
-          <li>✓ Daily Drivers & Laptops</li>
-          <li>✓ Proton-Lumin Sandbox</li>
-          <li>✓ lumin-powerd Daemon</li>
+        <div class="ram-pill">~420 MB RAM</div>
+        <p>macOS Sonoma Glass Wayland desktop with smooth multi-touch touchpad gestures, dynamic top bar, and luxury visual depth.</p>
+        <ul class="check-list">
+          <li>Daily Drivers & Laptops</li>
+          <li>Proton-Lumin Sandbox</li>
+          <li>lumin-powerd Thermal Daemon</li>
         </ul>
       </div>
 
-      <div class="flavor-card">
-        <div class="flavor-icon">⚡</div>
+      <div class="card flavor-card">
+        <div class="card-icon">⚡</div>
         <h3>Lite Edition</h3>
-        <div class="ram-badge">RAM: &lt; 280 MB</div>
-        <p>Ultra-minimalist shell engineered to resurrect 15-year-old PCs with sub-300MB RAM usage.</p>
-        <ul class="flavor-list">
-          <li>✓ Low-Spec & Ancient Hardware</li>
-          <li>✓ ZRAM ZSTD 3.0x Compression</li>
-          <li>✓ Boot Time &lt; 4 Seconds</li>
+        <div class="ram-pill">&lt; 280 MB RAM</div>
+        <p>Ultra-minimalist shell engineered to resurrect 15-year-old PCs with sub-300MB RAM usage and instant responsiveness.</p>
+        <ul class="check-list">
+          <li>Low-Spec & Ancient PCs</li>
+          <li>ZRAM ZSTD 3.0x Compression</li>
+          <li>Boot Time &lt; 4 Seconds</li>
         </ul>
       </div>
 
-      <div class="flavor-card">
-        <div class="flavor-icon">🎮</div>
+      <div class="card flavor-card">
+        <div class="card-icon">🎮</div>
         <h3>GameDeck Edition</h3>
-        <p>Pre-tuned for gaming laptops, desktops, and handhelds (Steam Deck, ROG Ally).</p>
-        <div class="ram-badge">RAM: ~500 MB</div>
-        <ul class="flavor-list">
-          <li>✓ Proton-Lumin GE + DXVK 2.4</li>
-          <li>✓ MangoHud Performance HUD</li>
-          <li>✓ BORE Zero-Latency Mode</li>
+        <div class="ram-pill">~500 MB RAM</div>
+        <p>Pre-tuned for gaming laptops, desktops, and handhelds (Steam Deck, ROG Ally) with zero background OS bloat.</p>
+        <ul class="check-list">
+          <li>Proton-GE + DXVK 2.4</li>
+          <li>MangoHud Performance HUD</li>
+          <li>lumin-game Zero-Latency Mode</li>
         </ul>
       </div>
 
-      <div class="flavor-card">
-        <div class="flavor-icon">🏢</div>
+      <div class="card flavor-card">
+        <div class="card-icon">🏢</div>
         <h3>Workstation Edition</h3>
-        <div class="ram-badge">RAM: ~550 MB</div>
-        <p>Professional desktop environment for office productivity, virtualization, and development.</p>
-        <ul class="flavor-list">
-          <li>✓ Windows Office Sandbox Runner</li>
-          <li>✓ KVM Virtualization & Docker</li>
-          <li>✓ AppArmor Enterprise Rules</li>
+        <div class="ram-pill">~550 MB RAM</div>
+        <p>Professional desktop environment for office productivity, software development, containerization, and virtualization.</p>
+        <ul class="check-list">
+          <li>Windows Office Sandbox Runner</li>
+          <li>KVM Virtualization & Docker</li>
+          <li>AppArmor Security Policy</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Features Grid -->
-  <section id="features" class="section bg-dark">
-    <h2 class="section-title">Universal Lightweight Core Architecture</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="f-icon">⚡</div>
-        <h3>Universal Ultra-Low RAM</h3>
-        <p>Starts under 280 MB – 420 MB idle RAM. ZRAM memory compression allows low-RAM computers to run smoothly without disk swapping.</p>
-      </div>
+  <!-- Gaming Engine Banner -->
+  <section id="gaming" class="section section-dark">
+    <div class="container">
+      <div class="gaming-banner">
+        <div class="gb-content">
+          <div class="card-tag gold">ZERO WINDOWS BULLSHIT</div>
+          <h2>Ultra-Fast Steam & Windows Gaming Engine</h2>
+          <p>Windows 11 wastes 3.5GB - 4.2GB of system RAM on telemetry, Defender scans, and background edge processes. LuminOS gives that performance back to your games with zero input latency.</p>
 
-      <div class="feature-card">
-        <div class="f-icon">🔋</div>
-        <h3>Native Power Daemon</h3>
-        <p><code>lumin-powerd</code> automatically switches CPU governors and enables PCIe ASPM C8/C10 deep C-states on battery power.</p>
+          <div class="code-block">
+            <span class="code-comment"># Enable LuminOS High-Performance Gaming Mode</span><br>
+            <span class="code-prompt">$</span> <span class="code-cmd">lumin-game --enable</span><br><br>
+            <span class="code-comment"># One-Click Install Windows Game & Create Desktop Shortcut</span><br>
+            <span class="code-prompt">$</span> <span class="code-cmd">lumin-install game_setup.exe "Cyberpunk 2077"</span>
+          </div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="feature-card">
-        <div class="f-icon">🌀</div>
-        <h3>BORE Kernel Scheduling</h3>
-        <p>Custom <code>linux-lumin 6.10.5</code> kernel with BORE & eBPF <code>sched_ext</code> for ultra-low frame latency during high background loads.</p>
+  <!-- Native C Tools Suite -->
+  <section id="tools" class="section">
+    <div class="section-header">
+      <h2 class="section-title">6 Native C System Tool Executables</h2>
+      <p class="section-desc">Compiled with -O3 optimizations for maximum speed and zero memory leaks.</p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card tool-card">
+        <h4><code>lumin-fetch</code></h4>
+        <p>System fetch utility featuring the official LuminOS Star emblem and hardware stats.</p>
       </div>
-
-      <div class="feature-card">
-        <div class="f-icon">🛡️</div>
-        <h3>Bubblewrap EXE Sandboxing</h3>
-        <p>Run Windows <code>.exe</code> binaries in unprivileged Bubblewrap (<code>bwrap</code>) sandbox containers with DXVK Vulkan acceleration (<code>lumin-security --sandbox</code>).</p>
+      <div class="card tool-card">
+        <h4><code>lumin-mgr</code></h4>
+        <p>Universal System Control Center and Proton-Lumin executable manager.</p>
       </div>
-
-      <div class="feature-card">
-        <div class="f-icon">🍏</div>
-        <h3>macOS Sonoma Glass UX</h3>
-        <p>Beautiful Wayland desktop environment with multi-touch touchpad gestures (3-finger swiping) and macOS traffic light controls.</p>
+      <div class="card tool-card">
+        <h4><code>lumin-powerd</code></h4>
+        <p>Battery & thermal management daemon enforcing ASPM C8/C10 deep C-states.</p>
       </div>
-
-      <div class="feature-card">
-        <div class="f-icon">📡</div>
-        <h3>SourceForge & GitHub Hosted</h3>
-        <p>Includes SHA256 checksums, open BitTorrent tracker magnet links, 24/7 GitHub CDN releases, and official SourceForge mirrors.</p>
+      <div class="card tool-card">
+        <h4><code>lumin-security</code></h4>
+        <p>Unprivileged Bubblewrap (<code>bwrap</code>) container sandbox for Windows EXEs.</p>
+      </div>
+      <div class="card tool-card">
+        <h4><code>lumin-game</code></h4>
+        <p>BORE scheduler CPU core frequency pinning & MangoHud FPS overlay injector.</p>
+      </div>
+      <div class="card tool-card">
+        <h4><code>lumin-install</code></h4>
+        <p>One-click Windows application installer with automatic desktop shortcut generation.</p>
       </div>
     </div>
   </section>
 
   <!-- Download Section -->
   <section id="download" class="section download-section">
-    <h2 class="section-title">Download LuminOS v1.0 ISO</h2>
-    <p class="download-sub">Universal 1.5 GB ISO image supporting all 4 official LuminOS Flavors.</p>
+    <div class="download-card">
+      <div class="dl-badge">OFFICIAL RELEASE CANDIDATE</div>
+      <h2>Download LuminOS v1.0 ISO</h2>
+      <p>Universal 1.5 GB ISO image supporting all 4 official LuminOS Flavors on x86_64 PCs.</p>
 
-    <div class="download-box">
-      <div class="dl-info">
-        <h3>LuminOS v1.0 Universal ISO Image</h3>
-        <p>Size: <strong>1.5 GB</strong> | BTIH: <code>bd2e4651c64cb624d9b88c3ee78244690e9815cc</code></p>
-        <div class="hash-box">
-          <code>SHA256: 87f7b78fe31f8c5ed1d3ae3d2384efae9e7a4f3724503c4507c84574367e270a</code>
-        </div>
+      <div class="hash-box">
+        <div><strong>SHA256 Checksum:</strong> <code>87f7b78fe31f8c5ed1d3ae3d2384efae9e7a4f3724503c4507c84574367e270a</code></div>
+        <div><strong>BTIH Infohash:</strong> <code>bd2e4651c64cb624d9b88c3ee78244690e9815cc</code></div>
       </div>
-      <div class="dl-buttons">
-        <a href="https://github.com/nosleepzzz/luminos/releases/download/v1.0.0-rc1/lumin-os-v1.0.0-rc1-x86_64.iso" class="btn-download">📥 GitHub Direct ISO (1.5 GB)</a>
-        <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="btn-download" style="background: linear-gradient(135deg, #ff6600, #e65c00); border-color: #ff6600;">⚡ SourceForge Mirror</a>
-        <a href="magnet:?xt=urn:btih:bd2e4651c64cb624d9b88c3ee78244690e9815cc&dn=lumin-os-v1.0.0-rc1-x86_64.iso&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://tracker.dler.org:6969/announce" class="btn-magnet">🧲 BitTorrent Magnet</a>
+
+      <div class="dl-actions">
+        <a href="https://github.com/nosleepzzz/luminos/releases/download/v1.0.0-rc1/lumin-os-v1.0.0-rc1-x86_64.iso" class="btn btn-gold btn-lg">
+          📥 GitHub Direct ISO (1.5 GB)
+        </a>
+        <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="btn btn-sf btn-lg">
+          ⚡ SourceForge Mirror ↗
+        </a>
+        <a href="magnet:?xt=urn:btih:bd2e4651c64cb624d9b88c3ee78244690e9815cc&dn=lumin-os-v1.0.0-rc1-x86_64.iso&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://tracker.dler.org:6969/announce" class="btn btn-magnet btn-lg">
+          🧲 BitTorrent Magnet
+        </a>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
-    <p>© 2026 LuminOS Project. Open Source Universal Operating System released under GPLv3 / MIT License.</p>
+    <p>© 2026 LuminOS Open Source Project. Built for speed, gaming & universal hardware freedom.</p>
   </footer>
 </body>
 </html>
