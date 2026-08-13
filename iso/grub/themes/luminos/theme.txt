@@ -1,0 +1,9 @@
+# LuminOS Glass GRUB theme
+desktop-image: "background.png"
+title-text: "LuminOS Glass"
+title-font: "DejaVu Sans Bold 16"
+title-color: "#e6b800"
+message-font: "DejaVu Sans 12"
+message-color: "#f5f5f5"
+terminal-box: "terminal_box_*.png"
+terminal-font: "DejaVu Sans Mono Regular 14"

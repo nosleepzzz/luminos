@@ -71,6 +71,7 @@ waybar
 wofi
 foot
 dunst
+libnotify
 grim
 slurp
 swaybg

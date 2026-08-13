@@ -37,6 +37,9 @@ check() {
 
 check "grub has systemd.firstboot=off" "grep -q 'systemd.firstboot=off' '${mnt}/boot/grub/grub.cfg'"
 check "grub has luminos-console entry" "grep -q 'luminos-console' '${mnt}/boot/grub/grub.cfg'"
+check "grub theme present" "test -f '${mnt}/boot/grub/themes/luminos/theme.txt'"
+check "grub theme background present" "test -f '${mnt}/boot/grub/themes/luminos/background.png'"
+check "syslinux splash present" "test -f '${mnt}/boot/syslinux/splash.png'"
 
 sfs="${mnt}/luminos/x86_64/airootfs.sfs"
 [[ -f "${sfs}" ]] || { echo "FAIL missing airootfs.sfs"; exit 1; }
@@ -47,19 +50,29 @@ unsquashfs -d "${root}" "${sfs}" \
   etc/shadow \
   usr/local/bin/lumin-hyprland \
   usr/share/wayland-sessions/luminos-glass.desktop \
+  usr/share/sddm/themes/luminos/Main.qml \
+  usr/share/sddm/themes/luminos/background.jpg \
+  usr/share/pixmaps/luminos.svg \
   home/lumin/.config/hypr/hyprland.conf \
   home/lumin/.config/waybar/config \
+  home/lumin/.config/wofi/config \
   >/dev/null
 
 check "customize_airootfs ran" "test -f '${root}/etc/luminos-live-ready'"
 check "SDDM session=luminos-glass" "grep -q 'Session=luminos-glass' '${root}/etc/sddm.conf.d/luminos.conf'"
+check "SDDM theme=luminos" "grep -q 'Current=luminos' '${root}/etc/sddm.conf.d/luminos.conf'"
+check "SDDM theme files present" "test -f '${root}/usr/share/sddm/themes/luminos/Main.qml'"
+check "SDDM background present" "test -f '${root}/usr/share/sddm/themes/luminos/background.jpg'"
+check "logo pixmaps present" "test -f '${root}/usr/share/pixmaps/luminos.svg'"
 check "lumin-hyprland wrapper present" "test -x '${root}/usr/local/bin/lumin-hyprland'"
 check "wrapper calls start-hyprland" "grep -q 'start-hyprland' '${root}/usr/local/bin/lumin-hyprland'"
 check "luminos-glass.desktop present" "test -f '${root}/usr/share/wayland-sessions/luminos-glass.desktop'"
 check "hypr config has Alt+Return" "grep -q 'bind = ALT, Return' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "hypr config opens foot on start" "grep -q 'exec-once = foot' '${root}/home/lumin/.config/hypr/hyprland.conf'"
+check "hypr welcome notification" "grep -q 'Welcome to LuminOS Glass' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "hypr config has no pseudotile" "! grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "waybar has LuminOS menu button" "grep -q 'custom/menu' '${root}/home/lumin/.config/waybar/config'"
+check "wofi config present" "test -f '${root}/home/lumin/.config/wofi/config'"
 check "lumin password is set" "awk -F: '\$1==\"lumin\" && length(\$2)>0 {found=1} END{exit !found}' '${root}/etc/shadow'"
 check "root password is set" "awk -F: '\$1==\"root\" && length(\$2)>0 {found=1} END{exit !found}' '${root}/etc/shadow'"
 

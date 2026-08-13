@@ -66,6 +66,7 @@ fi
 echo "=========================================================="
 echo "  ISO build finished: ${iso_path}"
 echo "  Live user: lumin / password lumin (autologin expected)"
-echo "  Desktop: click LuminOS on top bar, or Alt+D / Alt+Return"
+echo "  Desktop: LuminOS bar button, Alt+D menu, Alt+Return terminal"
+echo "  Branding: GRUB + syslinux + SDDM themes included"
 echo "  Copy to Shared only after verification PASSED above."
 echo "=========================================================="

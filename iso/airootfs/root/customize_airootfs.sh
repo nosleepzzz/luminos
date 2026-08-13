@@ -36,8 +36,13 @@ test -x /usr/local/bin/lumin-hyprland
 test -f /usr/share/wayland-sessions/luminos-glass.desktop
 command -v start-hyprland >/dev/null
 grep -q 'Session=luminos-glass' /etc/sddm.conf.d/luminos.conf
+grep -q 'Current=luminos' /etc/sddm.conf.d/luminos.conf
 grep -q 'bind = ALT, Return' /etc/skel/.config/hypr/hyprland.conf
-! grep -q 'pseudotile' /etc/skel/.config/hypr/hyprland.conf
+grep -q 'custom/menu' /etc/skel/.config/waybar/config
+test -f /usr/share/sddm/themes/luminos/Main.qml
+test -f /usr/share/sddm/themes/luminos/background.jpg
+test -f /usr/share/pixmaps/luminos.svg
+! grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' /etc/skel/.config/hypr/hyprland.conf
 
 # Live user home = skel (waybar menu + hypr config)
 usermod -aG seat,video,input,render lumin 2>/dev/null || true

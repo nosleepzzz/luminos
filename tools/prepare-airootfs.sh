@@ -7,14 +7,61 @@ AIROOTFS="${PROJECT_DIR}/iso/airootfs"
 
 echo "==> Preparing LuminOS Glass airootfs overlays"
 
-# Wallpaper
-mkdir -p "${AIROOTFS}/usr/share/backgrounds/luminos"
-if [[ -f "${PROJECT_DIR}/assets/lumin-wallpaper.jpg" ]]; then
-  cp -f "${PROJECT_DIR}/assets/lumin-wallpaper.jpg" \
-    "${AIROOTFS}/usr/share/backgrounds/luminos/lumin-wallpaper.jpg"
+wall_src="${PROJECT_DIR}/assets/lumin-wallpaper.jpg"
+if [[ ! -f "${wall_src}" ]]; then
+  wall_src="${AIROOTFS}/usr/share/backgrounds/luminos/lumin-wallpaper.jpg"
 fi
 
-# Live user home from skel
+mkdir -p "${AIROOTFS}/usr/share/backgrounds/luminos"
+mkdir -p "${AIROOTFS}/usr/share/sddm/themes/luminos"
+mkdir -p "${AIROOTFS}/usr/share/pixmaps"
+mkdir -p "${AIROOTFS}/usr/share/icons/hicolor/scalable/apps"
+mkdir -p "${PROJECT_DIR}/iso/grub/themes/luminos"
+mkdir -p "${PROJECT_DIR}/iso/syslinux"
+
+if [[ -f "${wall_src}" ]]; then
+  cp -f "${wall_src}" "${AIROOTFS}/usr/share/backgrounds/luminos/lumin-wallpaper.jpg"
+  cp -f "${wall_src}" "${AIROOTFS}/usr/share/sddm/themes/luminos/background.jpg"
+
+  if [[ -f "${PROJECT_DIR}/iso/grub/themes/luminos/background.png" ]]; then
+    :
+  elif command -v magick >/dev/null 2>&1; then
+    magick "${wall_src}" -resize 1920x1080^ -gravity center -extent 1920x1080 \
+      "${PROJECT_DIR}/iso/grub/themes/luminos/background.png"
+  elif command -v convert >/dev/null 2>&1; then
+    convert "${wall_src}" -resize 1920x1080^ -gravity center -extent 1920x1080 \
+      "${PROJECT_DIR}/iso/grub/themes/luminos/background.png"
+  elif command -v ffmpeg >/dev/null 2>&1; then
+    ffmpeg -y -loglevel error -i "${wall_src}" \
+      -vf "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080" \
+      "${PROJECT_DIR}/iso/grub/themes/luminos/background.png"
+  else
+    echo "WARNING: no background.png and no imagemagick/ffmpeg — GRUB theme may lack wallpaper."
+  fi
+
+  if [[ ! -f "${PROJECT_DIR}/iso/syslinux/splash.png" ]]; then
+    if command -v magick >/dev/null 2>&1; then
+      magick "${wall_src}" -resize 1024x768! "${PROJECT_DIR}/iso/syslinux/splash.png"
+    elif command -v convert >/dev/null 2>&1; then
+      convert "${wall_src}" -resize 1024x768! "${PROJECT_DIR}/iso/syslinux/splash.png"
+    elif command -v ffmpeg >/dev/null 2>&1; then
+      ffmpeg -y -loglevel error -i "${wall_src}" -vf scale=1024:768 \
+        "${PROJECT_DIR}/iso/syslinux/splash.png"
+    else
+      echo "WARNING: no splash.png and no imagemagick/ffmpeg — BIOS menu background may be missing."
+    fi
+  fi
+else
+  echo "WARNING: wallpaper source not found under assets/ or airootfs."
+fi
+
+logo_src="${PROJECT_DIR}/assets/lumin-logo.svg"
+if [[ -f "${logo_src}" ]]; then
+  cp -f "${logo_src}" "${AIROOTFS}/usr/share/pixmaps/luminos.svg"
+  cp -f "${logo_src}" "${AIROOTFS}/usr/share/icons/hicolor/scalable/apps/luminos.svg"
+fi
+
+# Live user home from skel (single source of truth for desktop dotfiles)
 mkdir -p "${AIROOTFS}/home/lumin"
 if [[ -d "${AIROOTFS}/etc/skel" ]]; then
   cp -a "${AIROOTFS}/etc/skel/." "${AIROOTFS}/home/lumin/"
@@ -41,12 +88,10 @@ chmod 750 "${AIROOTFS}/etc/sudoers.d" 2>/dev/null || true
 chmod 440 "${AIROOTFS}/etc/sudoers.d/g_wheel" 2>/dev/null || true
 chmod 755 "${AIROOTFS}/root/customize_airootfs.sh" 2>/dev/null || true
 
-# Timezone for overlay (customize_airootfs.sh also sets this inside the chroot)
 if [[ -e /usr/share/zoneinfo/UTC ]]; then
   ln -sfn /usr/share/zoneinfo/UTC "${AIROOTFS}/etc/localtime"
 fi
 
-# Empty machine-id: mkarchiso will overwrite with "uninitialized" — cmdline + mask handle that
 : > "${AIROOTFS}/etc/machine-id"
 
 echo "==> airootfs prepare complete"

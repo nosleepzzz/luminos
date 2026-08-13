@@ -1,0 +1,6 @@
+[SddmGreeterTheme]
+Name=LuminOS Glass
+Description=Branded login theme for LuminOS Glass live ISO
+Author=LuminOS Project
+Website=https://github.com/nosleepzzz/luminos
+MainScript=Main.qml

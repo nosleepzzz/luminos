@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="LuminOS">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="100%" stop-color="#e6b800"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#141418"/>
+  <circle cx="64" cy="64" r="44" fill="url(#g)" opacity="0.95"/>
+  <path fill="#141418" d="M44 88V40h12l16 28 16-28h12v48h-11V58l-14 24h-10L51 58v30z"/>
+</svg>

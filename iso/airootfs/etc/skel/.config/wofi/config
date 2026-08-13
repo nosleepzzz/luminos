@@ -1,0 +1,15 @@
+width=520
+height=360
+location=center
+show=drun
+prompt=Search apps
+filter_rate=100
+allow_markup=true
+no_actions=true
+halign=fill
+orientation=vertical
+content_halign=fill
+insensitive=true
+matching=fuzzy
+sort_order=alphabetical
+gtk_dark=true
