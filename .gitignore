@@ -1,5 +1,6 @@
 # Build outputs
 out/
+.build/
 /tmp/
 
 # Compiled helpers (rebuild with ./build-lumin.sh or make)

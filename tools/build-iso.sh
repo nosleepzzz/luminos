@@ -4,16 +4,27 @@ set -euo pipefail
 
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${PROJECT_DIR}/out"
-WORK_DIR="${WORK_DIR:-/tmp/lumin-archiso-tmp}"
+# Prefer project disk over /tmp (often tmpfs / too small for mkarchiso)
+WORK_DIR="${WORK_DIR:-${PROJECT_DIR}/.build/work}"
 
-mkdir -p "${OUT_DIR}"
+mkdir -p "${OUT_DIR}" "$(dirname "${WORK_DIR}")"
 
 echo "=========================================================="
 echo "  LuminOS Glass ISO Builder"
 echo "=========================================================="
 echo "  Profile: ${PROJECT_DIR}/iso"
+echo "  Work:    ${WORK_DIR}"
 echo "  Output:  ${OUT_DIR}"
 echo "=========================================================="
+
+echo "==> Free space on build filesystem:"
+df -h "${PROJECT_DIR}" || true
+# Rough gate: desktop ISOs commonly need 25GB+ free during squash
+avail_kb="$(df -Pk "${PROJECT_DIR}" | awk 'NR==2 {print $4}')"
+if [[ -n "${avail_kb}" && "${avail_kb}" -lt 25000000 ]]; then
+  echo "WARNING: less than ~25GB free under ${PROJECT_DIR}."
+  echo "         Expand the VM disk or free space before continuing."
+fi
 
 bash "${PROJECT_DIR}/build-lumin.sh"
 bash "${PROJECT_DIR}/tools/prepare-airootfs.sh"

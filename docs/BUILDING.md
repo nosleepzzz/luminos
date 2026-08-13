@@ -8,7 +8,7 @@ Phase 1 does **not** require a local ISO build from Windows. Use this guide when
 | --- | --- |
 | OS | CachyOS (preferred) or Arch Linux |
 | RAM | 8 GB minimum, 16 GB comfortable |
-| Disk | 40 GB+ free |
+| Disk | **60 GB+** virtual disk recommended; keep **25 GB+ free** for mkarchiso work + squash |
 | Nested virt | Enable if you will test the ISO inside another VM |
 | Network | Needed to pull CachyOS + Arch packages |
 
