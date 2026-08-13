@@ -25,9 +25,21 @@ systemctl enable NetworkManager.service 2>/dev/null || true
 systemctl enable sshd.service 2>/dev/null || true
 
 # Software rendering for VirtualBox / VMs without working GL
-if [[ -f /etc/environment ]]; then
-  grep -q 'WLR_RENDERER_ALLOW_SOFTWARE' /etc/environment || \
-    printf '\nWLR_RENDERER_ALLOW_SOFTWARE=1\nWLR_NO_HARDWARE_CURSORS=1\n' >>/etc/environment
-fi
+mkdir -p /etc
+cat >/etc/environment <<'EOF'
+WLR_RENDERER_ALLOW_SOFTWARE=1
+WLR_NO_HARDWARE_CURSORS=1
+WLR_RENDERER=pixman
+EOF
+
+chmod 755 /usr/local/bin/lumin-hyprland 2>/dev/null || true
+
+# Rescue: autologin on tty2 so VMs can always recover without SDDM
+mkdir -p /etc/systemd/system/getty@tty2.service.d
+cat >/etc/systemd/system/getty@tty2.service.d/autologin.conf <<'EOF'
+[Service]
+ExecStart=
+ExecStart=-/usr/bin/agetty --autologin lumin --noclear %I $TERM
+EOF
 
 echo "==> customize_airootfs done"

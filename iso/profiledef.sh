@@ -29,4 +29,5 @@ file_permissions=(
   ["/usr/bin/lumin-security"]="0:0:755"
   ["/usr/bin/lumin-game"]="0:0:755"
   ["/usr/bin/lumin-install"]="0:0:755"
+  ["/usr/local/bin/lumin-hyprland"]="0:0:755"
 )

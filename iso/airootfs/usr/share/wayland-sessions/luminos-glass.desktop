@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=LuminOS Glass
+Comment=Hyprland with software rendering (VM-safe)
+Exec=/usr/local/bin/lumin-hyprland
+TryExec=/usr/local/bin/lumin-hyprland
+Type=Application
+DesktopNames=Hyprland
