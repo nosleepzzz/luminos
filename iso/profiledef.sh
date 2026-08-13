@@ -7,7 +7,7 @@ iso_application="LuminOS Live ISO & Installer"
 iso_version="v1.0.0-rc1"
 install_dir="luminos"
 buildmodes=('iso')
-bootmodes=('bios.syslinux.mbr' 'bios.syslinux.eltorito' 'uefi-x86_64.systemd-boot.esp' 'uefi-x86_64.systemd-boot.eltorito')
+bootmodes=('bios.syslinux' 'uefi.systemd-boot')
 arch="x86_64"
 pacman_conf="pacman.conf"
 airootfs_image_type="squashfs"
@@ -19,4 +19,6 @@ file_permissions=(
   ["/usr/bin/lumin-mgr"]="0:0:755"
   ["/usr/bin/lumin-powerd"]="0:0:755"
   ["/usr/bin/lumin-security"]="0:0:755"
+  ["/usr/bin/lumin-game"]="0:0:755"
+  ["/usr/bin/lumin-install"]="0:0:755"
 )

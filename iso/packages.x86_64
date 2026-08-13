@@ -1,6 +1,9 @@
 # LuminOS ISO Core Package Manifest (x86_64 Universal Release)
 
-# Kernel & Drivers
+# Base, Firmware & Bootloaders
+syslinux
+memtest86+
+licenses
 linux-zen
 linux-firmware
 btrfs-progs
@@ -12,13 +15,10 @@ amd-ucode
 
 # Graphics & Mesa Driver Stack
 mesa
-lib32-mesa
 vulkan-icd-loader
-lib32-vulkan-icd-loader
 vulkan-intel
 vulkan-radeon
 vulkan-mesa-layers
-lib32-vulkan-mesa-layers
 
 # Desktop Environment & Wayland Compositor
 hyprland
@@ -34,23 +34,7 @@ sddm
 qt5-wayland
 qt6-wayland
 
-# Calamares Live GUI System Installer
-calamares
-calamares-config-luminos
-kconfig
-kcoreaddons
-ki18n
-kiconthemes
-kio
-kservice
-solid
-yaml-cpp
-
 # Windows Application Compatibility Layer (Out-of-the-Box)
-wine-ge-custom
-proton-ge-custom-bin
-dxvk-bin
-vkd3d-proton-bin
 bubblewrap
 cabextract
 p7zip
@@ -70,4 +54,3 @@ git
 curl
 wget
 htop
-neofetch
