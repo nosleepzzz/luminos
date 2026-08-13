@@ -1,10 +1,26 @@
-# LuminOS Build Outputs & Temporary Files
-out/*.iso
-out/*.iso.sha256
-out/*.torrent
-out/*.magnet
+# Build outputs
+out/
 /tmp/
+
+# Compiled helpers (rebuild with ./build-lumin.sh or make)
+iso/airootfs/usr/bin/lumin
 iso/airootfs/usr/bin/lumin-fetch
 iso/airootfs/usr/bin/lumin-mgr
 iso/airootfs/usr/bin/lumin-powerd
 iso/airootfs/usr/bin/lumin-security
+iso/airootfs/usr/bin/lumin-game
+iso/airootfs/usr/bin/lumin-install
+
+# Editor / OS junk
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Secrets (never commit)
+.env
+.env.*
+*.pem
+*credentials*
+SOURCEFORGE_API_KEY

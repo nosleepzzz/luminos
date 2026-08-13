@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LuminOS — Universal Ultra-Lightweight OS & Gaming Engine</title>
+  <title>LuminOS — Lean CachyOS Glass (Hyprland)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Background Glow FX -->
   <div class="bg-glow-orb orb-1"></div>
   <div class="bg-glow-orb orb-2"></div>
 
-  <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="#" class="nav-brand">
@@ -22,58 +20,56 @@
         <span class="brand-name">Lumin<span>OS</span></span>
       </a>
       <div class="nav-links">
-        <a href="#flavors">Flavors</a>
-        <a href="#gaming">Gaming Engine</a>
-        <a href="#features">Features</a>
-        <a href="#tools">System Tools</a>
-        <a href="#download" class="nav-btn-primary">Download ISO</a>
+        <a href="#glass">Glass</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#tools">Tools</a>
+        <a href="#download" class="nav-btn-primary">Status</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
   <header class="hero">
     <div class="hero-container">
       <div class="hero-text">
         <div class="hero-badge">
           <span class="badge-dot"></span>
-          <span>v1.0.0-rc1 Official Release</span>
+          <span>Pre-alpha · Phase 1 · Glass WIP</span>
         </div>
         <h1 class="hero-title">
-          Weightless Speed.<br>
-          <span class="text-gradient">Zero Windows Bloat.</span>
+          Lean Glass.<br>
+          <span class="text-gradient">CachyOS speed, less bloat.</span>
         </h1>
         <p class="hero-description">
-          The universal, ultra-lightweight Linux operating system engineered for laptops, low-spec PCs, and high-performance gaming rigs. Featuring sub-<strong>280MB – 420MB idle RAM</strong>, BORE kernel scheduling, Bubblewrap security sandboxing, and out-of-the-box Windows application execution.
+          LuminOS is a CachyOS/Arch-based distribution focused on a single <strong>Glass</strong> Hyprland desktop.
+          Phase 1 builds the lean live/install profile. Phase 2 adds thin Windows app support — not fake “done” marketing.
         </p>
 
         <div class="hero-actions">
-          <a href="#download" class="btn btn-gold">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Download ISO (1.5 GB)
+          <a href="https://github.com/nosleepzzz/luminos" target="_blank" class="btn btn-gold">
+            GitHub Source
           </a>
           <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="btn btn-glass">
-            ⚡ SourceForge Mirror ↗
+            SourceForge (mirror later)
           </a>
-          <a href="https://github.com/nosleepzzz/luminos" target="_blank" class="btn btn-outline">
-            GitHub Source ↗
+          <a href="#roadmap" class="btn btn-outline">
+            Roadmap
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-item">
-            <span class="stat-val">&lt; 280 MB</span>
-            <span class="stat-lbl">Lite Idle RAM</span>
+            <span class="stat-val">Glass</span>
+            <span class="stat-lbl">One flavor now</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-val">0% Jitter</span>
-            <span class="stat-lbl">BORE Scheduler</span>
+            <span class="stat-val">linux-cachyos</span>
+            <span class="stat-lbl">Kernel target</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat-item">
-            <span class="stat-val">DXVK 2.4</span>
-            <span class="stat-lbl">Vulkan Translation</span>
+            <span class="stat-val">Phase 2</span>
+            <span class="stat-lbl">Windows apps later</span>
           </div>
         </div>
       </div>
@@ -89,10 +85,10 @@
             </div>
             <div class="fetch-preview">
               <span class="c-gold">user@luminos</span>:<span class="c-blue">~</span>$ lumin-fetch<br>
-              <span class="c-gold">OS:</span> LuminOS v1.0.0-rc1 x86_64<br>
-              <span class="c-gold">Kernel:</span> 6.10.5-lumin-BORE<br>
-              <span class="c-gold">Uptime:</span> 4 mins<br>
-              <span class="c-gold">Memory:</span> 278MiB / 15982MiB
+              <span class="c-gold">OS:</span> LuminOS Glass (pre-alpha)<br>
+              <span class="c-gold">Base:</span> CachyOS / Arch<br>
+              <span class="c-gold">Desktop:</span> Hyprland (lean)<br>
+              <span class="c-gold">Windows apps:</span> Phase 2
             </div>
           </div>
         </div>
@@ -100,144 +96,126 @@
     </div>
   </header>
 
-  <!-- Flavors Section -->
-  <section id="flavors" class="section">
+  <section id="glass" class="section">
     <div class="section-header">
-      <h2 class="section-title">4 Official LuminOS Flavors</h2>
-      <p class="section-desc">Tailored operating system profiles engineered for every hardware use-case.</p>
+      <h2 class="section-title">Glass Edition (active)</h2>
+      <p class="section-desc">Hyprland Wayland desktop with a deliberately small package set. Extra flavors stay on the roadmap until they exist.</p>
     </div>
 
     <div class="grid-4">
       <div class="card flavor-card featured">
-        <div class="card-tag">FLAGSHIP</div>
-        <div class="card-icon">🍏</div>
-        <h3>Glass Edition</h3>
-        <div class="ram-pill">~420 MB RAM</div>
-        <p>macOS Sonoma Glass Wayland desktop with smooth multi-touch touchpad gestures, dynamic top bar, and luxury visual depth.</p>
+        <div class="card-tag">ACTIVE</div>
+        <h3>Glass</h3>
+        <div class="ram-pill">Hyprland lean</div>
+        <p>Flagship Wayland session: waybar, wofi, foot, SDDM, PipeWire, NetworkManager, ZRAM — no Plasma, no Steam stack.</p>
         <ul class="check-list">
-          <li>Daily Drivers & Laptops</li>
-          <li>Proton-Lumin Sandbox</li>
-          <li>lumin-powerd Thermal Daemon</li>
+          <li>linux-cachyos</li>
+          <li>CachyOS + Arch repos</li>
+          <li>Strip-the-bloat package policy</li>
         </ul>
       </div>
 
       <div class="card flavor-card">
-        <div class="card-icon">⚡</div>
-        <h3>Lite Edition</h3>
-        <div class="ram-pill">&lt; 280 MB RAM</div>
-        <p>Ultra-minimalist shell engineered to resurrect 15-year-old PCs with sub-300MB RAM usage and instant responsiveness.</p>
-        <ul class="check-list">
-          <li>Low-Spec & Ancient PCs</li>
-          <li>ZRAM ZSTD 3.0x Compression</li>
-          <li>Boot Time &lt; 4 Seconds</li>
-        </ul>
+        <div class="card-tag">PLANNED</div>
+        <h3>Lite</h3>
+        <div class="ram-pill">Not started</div>
+        <p>Future ultra-minimal shell for older hardware. Not available yet.</p>
       </div>
 
       <div class="card flavor-card">
-        <div class="card-icon">🎮</div>
-        <h3>GameDeck Edition</h3>
-        <div class="ram-pill">~500 MB RAM</div>
-        <p>Pre-tuned for gaming laptops, desktops, and handhelds (Steam Deck, ROG Ally) with zero background OS bloat.</p>
-        <ul class="check-list">
-          <li>Proton-GE + DXVK 2.4</li>
-          <li>MangoHud Performance HUD</li>
-          <li>lumin-game Zero-Latency Mode</li>
-        </ul>
+        <div class="card-tag">PLANNED</div>
+        <h3>GameDeck</h3>
+        <div class="ram-pill">Not started</div>
+        <p>Future opt-in gaming layer. Will not bloat the Glass base image.</p>
       </div>
 
       <div class="card flavor-card">
-        <div class="card-icon">🏢</div>
-        <h3>Workstation Edition</h3>
-        <div class="ram-pill">~550 MB RAM</div>
-        <p>Professional desktop environment for office productivity, software development, containerization, and virtualization.</p>
-        <ul class="check-list">
-          <li>Windows Office Sandbox Runner</li>
-          <li>KVM Virtualization & Docker</li>
-          <li>AppArmor Security Policy</li>
-        </ul>
+        <div class="card-tag">PLANNED</div>
+        <h3>Workstation</h3>
+        <div class="ram-pill">Not started</div>
+        <p>Future developer/office extras. Separate from lean Glass.</p>
       </div>
     </div>
   </section>
 
-  <!-- Gaming Engine Banner -->
-  <section id="gaming" class="section section-dark">
+  <section id="roadmap" class="section section-dark">
     <div class="container">
       <div class="gaming-banner">
         <div class="gb-content">
-          <div class="card-tag gold">ZERO WINDOWS BULLSHIT</div>
-          <h2>Ultra-Fast Steam & Windows Gaming Engine</h2>
-          <p>Windows 11 wastes 3.5GB - 4.2GB of system RAM on telemetry, Defender scans, and background edge processes. LuminOS gives that performance back to your games with zero input latency.</p>
-
+          <div class="card-tag gold">ROADMAP</div>
+          <h2>Phase 1 now · Phase 2 Windows apps next</h2>
+          <p>
+            Phase 1 finishes a bootable lean Glass ISO on a CachyOS/Arch build host.
+            Phase 2 wires Wine-GE or Proton with optional Bubblewrap — seamless when ready, absent until then.
+          </p>
           <div class="code-block">
-            <span class="code-comment"># Enable LuminOS High-Performance Gaming Mode</span><br>
-            <span class="code-prompt">$</span> <span class="code-cmd">lumin-game --enable</span><br><br>
-            <span class="code-comment"># One-Click Install Windows Game & Create Desktop Shortcut</span><br>
-            <span class="code-prompt">$</span> <span class="code-cmd">lumin-install game_setup.exe "Cyberpunk 2077"</span>
+            <span class="code-comment"># Compile helpers today</span><br>
+            <span class="code-prompt">$</span> <span class="code-cmd">./build-lumin.sh</span><br><br>
+            <span class="code-comment"># ISO build (Linux / CachyOS host — see docs/BUILDING.md)</span><br>
+            <span class="code-prompt">$</span> <span class="code-cmd">sudo ./tools/build-iso.sh</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Native C Tools Suite -->
   <section id="tools" class="section">
     <div class="section-header">
-      <h2 class="section-title">6 Native C System Tool Executables</h2>
-      <p class="section-desc">Compiled with -O3 optimizations for maximum speed and zero memory leaks.</p>
+      <h2 class="section-title">Native helpers</h2>
+      <p class="section-desc">Small C utilities. Windows-related commands honestly report “not implemented” until Phase 2.</p>
     </div>
 
     <div class="grid-3">
       <div class="card tool-card">
         <h4><code>lumin-fetch</code></h4>
-        <p>System fetch utility featuring the official LuminOS Star emblem and hardware stats.</p>
+        <p>System info with the LuminOS star emblem.</p>
       </div>
       <div class="card tool-card">
         <h4><code>lumin-mgr</code></h4>
-        <p>Universal System Control Center and Proton-Lumin executable manager.</p>
+        <p>Status CLI; <code>--run-exe</code> reserved for Phase 2.</p>
       </div>
       <div class="card tool-card">
         <h4><code>lumin-powerd</code></h4>
-        <p>Battery & thermal management daemon enforcing ASPM C8/C10 deep C-states.</p>
+        <p>Advisory AC/battery profile helper (daemon later).</p>
       </div>
       <div class="card tool-card">
         <h4><code>lumin-security</code></h4>
-        <p>Unprivileged Bubblewrap (<code>bwrap</code>) container sandbox for Windows EXEs.</p>
+        <p>Audit CLI; sandbox runner arrives in Phase 2.</p>
       </div>
       <div class="card tool-card">
         <h4><code>lumin-game</code></h4>
-        <p>BORE scheduler CPU core frequency pinning & MangoHud FPS overlay injector.</p>
+        <p>Opt-in gaming mode placeholder — not in Glass base.</p>
       </div>
       <div class="card tool-card">
         <h4><code>lumin-install</code></h4>
-        <p>One-click Windows application installer with automatic desktop shortcut generation.</p>
+        <p>Windows installer helper — Phase 2.</p>
       </div>
     </div>
   </section>
 
-  <!-- Download Section -->
   <section id="download" class="section download-section">
     <div class="download-card">
-      <div class="dl-badge">OFFICIAL RELEASE CANDIDATE</div>
-      <h2>Download LuminOS v1.0 ISO</h2>
-      <p>Universal 1.5 GB ISO image supporting all 4 official LuminOS Flavors on x86_64 PCs.</p>
-
-      <div class="hash-box">
-        <div><strong>SHA256 Checksum:</strong> <code>4036617abf834b692aa55e0ebd739b2265dd57a3dcf53233c817659121d5f248</code></div>
-      </div>
+      <div class="dl-badge">PRE-ALPHA</div>
+      <h2>ISO status</h2>
+      <p>
+        A verified lean Glass ISO is not published from this Phase 1 tree yet.
+        Older <code>v1.0.0-rc1</code> assets are historical — see release notes in the repo.
+        Watch GitHub Releases for the next honest Glass build.
+      </p>
 
       <div class="dl-actions">
-        <a href="https://github.com/nosleepzzz/luminos/releases/download/v1.0.0-rc1/lumin-os-v1.0.0-rc1-x86_64.iso" class="btn btn-gold btn-lg">
-          📥 GitHub Direct ISO (1.5 GB)
+        <a href="https://github.com/nosleepzzz/luminos" class="btn btn-gold btn-lg">
+          View repository
         </a>
-        <a href="https://sourceforge.net/projects/luminos/" target="_blank" class="btn btn-sf btn-lg">
-          ⚡ SourceForge Mirror ↗
+        <a href="https://github.com/nosleepzzz/luminos/releases" target="_blank" class="btn btn-sf btn-lg">
+          Releases
         </a>
       </div>
     </div>
   </section>
 
   <footer class="site-footer">
-    <p>© 2026 LuminOS Open Source Project. Built for speed, gaming & universal hardware freedom.</p>
+    <p>© 2026 LuminOS. Lean Glass on CachyOS/Arch — build in public, ship what works.</p>
   </footer>
 </body>
 </html>

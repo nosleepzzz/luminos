@@ -1,9 +1,10 @@
 [Desktop Entry]
 Type=Application
-Name=LuminOS Windows Application Runner
-Comment=Run Windows applications securely in LuminOS Bubblewrap sandbox
+Name=LuminOS Windows Runner (Phase 2)
+Comment=Placeholder — Windows .exe execution arrives in Phase 2
 Exec=lumin-security --sandbox %f
-Icon=wine
+Icon=utilities-terminal
 MimeType=application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;
-Terminal=false
+Terminal=true
+NoDisplay=true
 Categories=System;Utility;

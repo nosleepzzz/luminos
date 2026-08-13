@@ -1,41 +1,42 @@
-/* LuminOS - Security Hardening & Sandbox Engine */
+/* LuminOS - Security audit helper (bwrap sandbox arrives in Phase 2) */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void audit_security_status() {
+static void audit_security_status(void) {
     printf("========================================================\n");
-    printf("  🛡️ LuminOS - Security & Hardening Control Audit       \n");
+    printf("  LuminOS - Security Audit\n");
     printf("========================================================\n");
-    printf("  • Kernel Hardening:  sysctl (kptr_restrict=2, dmesg_restrict=1)\n");
-    printf("  • eBPF Hardening:    unprivileged_bpf_disabled=1\n");
-    printf("  • Process Security:  Yama Ptrace Scope 2 (Anti-memory inspection)\n");
-    printf("  • EXE Sandbox Mode:  Bubblewrap (bwrap) Unprivileged Container\n");
-    printf("  • Firewall State:    Stealth Mode (Default Deny Incoming)\n");
-    printf("  • MAC System:        AppArmor Profiles Active\n");
+    printf("  Kernel sysctl profile: iso/airootfs/etc/sysctl.d/\n");
+    printf("  Bubblewrap EXE sandbox: Phase 2 (not implemented)\n");
+    printf("  Firewall / AppArmor:    planned with lean Glass ISO\n");
     printf("========================================================\n");
 }
 
-void launch_sandboxed_exe(const char *exe_path) {
-    printf("🛡️ [LuminSecurity] Spawning Sandboxed Container for: %s\n", exe_path);
-    printf("   └─ Container Engine: Bubblewrap (bwrap unprivileged sandbox)\n");
-    printf("   └─ File System Scope: Read-Only Host Mount (--ro-bind / /)\n");
-    printf("   └─ Isolated Prefix:   Isolated Wine Prefix (~/.lumin-win)\n");
-    printf("   └─ Network Policy:    Filtered Socket Gateway\n");
-    printf("🔒 Untrusted Windows binary isolated successfully!\n");
+static int launch_sandboxed_exe(const char *exe_path) {
+    (void)exe_path;
+    fprintf(stderr,
+            "lumin-security: sandboxed .exe execution is not implemented yet.\n"
+            "Phase 2 will use bubblewrap around Wine-GE/Proton.\n");
+    return 1;
+}
+
+static void usage(void) {
+    printf("Usage: lumin-security [--audit | --sandbox <app.exe>]\n");
 }
 
 int main(int argc, char **argv) {
     if (argc > 1) {
         if (strcmp(argv[1], "--sandbox") == 0) {
-            launch_sandboxed_exe(argc > 2 ? argv[2] : "app.exe");
-        } else if (strcmp(argv[1], "--audit") == 0) {
-            audit_security_status();
-        } else {
-            printf("Usage: lumin-security [--audit | --sandbox <app.exe>]\n");
+            return launch_sandboxed_exe(argc > 2 ? argv[2] : NULL);
         }
-    } else {
-        audit_security_status();
+        if (strcmp(argv[1], "--audit") == 0) {
+            audit_security_status();
+            return 0;
+        }
+        usage();
+        return 1;
     }
+    audit_security_status();
     return 0;
 }

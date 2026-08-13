@@ -1,0 +1,11 @@
+NAME="LuminOS Glass"
+PRETTY_NAME="LuminOS Glass (pre-alpha)"
+ID=luminos
+ID_LIKE="cachyos arch"
+BUILD_ID=rolling
+ANSI_COLOR="1;33"
+HOME_URL="https://github.com/nosleepzzz/luminos"
+DOCUMENTATION_URL="https://github.com/nosleepzzz/luminos/tree/main/docs"
+SUPPORT_URL="https://github.com/nosleepzzz/luminos/issues"
+BUG_REPORT_URL="https://github.com/nosleepzzz/luminos/issues"
+LOGO=luminos

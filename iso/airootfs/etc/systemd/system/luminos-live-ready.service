@@ -1,0 +1,11 @@
+[Unit]
+Description=LuminOS Glass live session hints
+After=multi-user.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

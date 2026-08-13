@@ -1,40 +1,44 @@
-/* LuminOS - Universal System Control Center & Windows Translation Runner */
+/* LuminOS - System control center (Windows runner arrives in Phase 2) */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-void show_status() {
+static void show_status(void) {
     printf("========================================================\n");
-    printf("     🌟 LuminOS - Universal System Control Center       \n");
+    printf("  LuminOS - System Control Center\n");
     printf("========================================================\n");
-    printf("  • Distro Name:     LuminOS (x86_64 Universal Edition)\n");
-    printf("  • RAM Footprint:   ~280 MB - 420 MB Idle (ZRAM ZSTD Target)\n");
-    printf("  • Power Daemon:    lumin-powerd (Auto AC/BAT Switch)\n");
-    printf("  • Security Engine: Bubblewrap Sandbox (lumin-security)\n");
-    printf("  • Windows Killer:  Built-in Wine-GE / Proton-Lumin EXE runner\n");
+    printf("  Distro:   LuminOS Glass (pre-alpha)\n");
+    printf("  Base:     CachyOS / Arch (linux-cachyos)\n");
+    printf("  Desktop:  Hyprland (lean Glass profile)\n");
+    printf("  Phase 1:  Lean live/install ISO profile\n");
+    printf("  Phase 2:  Wine-GE / Proton .exe runner (not shipped yet)\n");
     printf("========================================================\n");
 }
 
-void launch_win_app(const char *exe) {
-    printf("🚀 [LuminWin] Executing Windows binary: %s\n", exe ? exe : "setup.exe");
-    printf("   └─ Initializing Proton-Lumin / Wine-GE translation layer...\n");
-    printf("   └─ Spawning Bubblewrap sandbox container...\n");
-    printf("   └─ Applying DXVK Direct3D -> Vulkan memory mapping...\n");
-    printf("   └─ Launching isolated container prefix (~/.lumin-win)...\n");
-    printf("✅ Windows application launched successfully!\n");
+static int launch_win_app(const char *exe) {
+    (void)exe;
+    fprintf(stderr,
+            "lumin-mgr: Windows application execution is not implemented yet.\n"
+            "Phase 2 will wire Wine-GE/Proton + per-app prefixes.\n");
+    return 1;
+}
+
+static void usage(void) {
+    printf("Usage: lumin [--status | --run-exe <file.exe>]\n");
 }
 
 int main(int argc, char **argv) {
     if (argc > 1) {
         if (strcmp(argv[1], "--run-exe") == 0 || strcmp(argv[1], "run") == 0) {
-            launch_win_app(argc > 2 ? argv[2] : "app.exe");
-        } else if (strcmp(argv[1], "--status") == 0) {
-            show_status();
-        } else {
-            printf("Usage: lumin [--status | --run-exe <file.exe>]\n");
+            return launch_win_app(argc > 2 ? argv[2] : NULL);
         }
-    } else {
-        show_status();
+        if (strcmp(argv[1], "--status") == 0) {
+            show_status();
+            return 0;
+        }
+        usage();
+        return 1;
     }
+    show_status();
     return 0;
 }

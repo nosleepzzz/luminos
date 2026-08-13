@@ -1,0 +1,4 @@
+## CachyOS mirrorlist (ISO overlay)
+Server = https://cdn77.cachyos.org/repo/$arch/$repo
+Server = https://us.cachyos.org/repo/$arch/$repo
+Server = https://mirror.lesviallon.fr/cachy/repo/$arch/$repo

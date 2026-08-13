@@ -1,0 +1,21 @@
+* {
+  font-family: "DejaVu Sans", sans-serif;
+  font-size: 12px;
+  color: #f5f5f5;
+}
+
+window#waybar {
+  background: rgba(20, 20, 24, 0.75);
+  border-bottom: 1px solid rgba(230, 184, 0, 0.35);
+}
+
+#workspaces button.active {
+  color: #e6b800;
+}
+
+#clock,
+#battery,
+#network,
+#pulseaudio {
+  padding: 0 8px;
+}

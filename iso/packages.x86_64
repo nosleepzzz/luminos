@@ -1,27 +1,72 @@
-# LuminOS ISO Core Package Manifest (x86_64 Universal Release)
+# LuminOS Glass — lean CachyOS/Arch live package set (x86_64)
+# Policy: every package must earn its place. No Plasma, Steam, Wine/Proton (Phase 2).
 
-# Base, Firmware & Bootloaders
-syslinux
-memtest86+
-licenses
-linux-zen
+# --- Base & live ISO toolchain ---
+base
+arch-install-scripts
+
+archlinux-keyring
+cachyos-keyring
+cachyos-mirrorlist
+bash-completion
+sudo
+nano
+vim
+less
+which
+git
+curl
+wget
+htop
+rsync
+openssh
+
+# --- Kernel & firmware (CachyOS) ---
+linux-cachyos
 linux-firmware
-btrfs-progs
-xfsprogs
-dosfstools
-e2fsprogs
 intel-ucode
 amd-ucode
+mkinitcpio
+mkinitcpio-archiso
 
-# Graphics & Mesa Driver Stack
+# --- Boot / ISO media ---
+syslinux
+memtest86+
+grub
+efibootmgr
+edk2-shell
+
+# --- Filesystems & disk tools ---
+btrfs-progs
+xfsprogs
+e2fsprogs
+dosfstools
+ntfs-3g
+exfatprogs
+parted
+gptfdisk
+lvm2
+cryptsetup
+
+# --- Networking ---
+networkmanager
+iwd
+wpa_supplicant
+wireless-regdb
+modemmanager
+usb_modeswitch
+
+# --- Graphics (Mesa / Vulkan) ---
 mesa
 vulkan-icd-loader
 vulkan-intel
 vulkan-radeon
 vulkan-mesa-layers
+libva-mesa-driver
 
-# Desktop Environment & Wayland Compositor
+# --- Glass desktop: Hyprland Wayland (lean) ---
 hyprland
+xdg-desktop-portal-hyprland
 waybar
 wofi
 foot
@@ -29,28 +74,34 @@ dunst
 grim
 slurp
 swaybg
-polkit-kde-agent
+swaylock
+wl-clipboard
 sddm
-qt5-wayland
 qt6-wayland
+polkit
+polkit-gnome
+xdg-desktop-portal-gtk
+xdg-user-dirs
+xdg-utils
+noto-fonts
+ttf-dejavu
 
-# Windows Application Compatibility Layer (Out-of-the-Box)
-bubblewrap
-cabextract
-p7zip
-winetricks
 
-# Audio, Networking & System Daemons
+# --- Audio ---
 pipewire
 pipewire-pulse
 pipewire-alsa
 wireplumber
-networkmanager
-network-manager-applet
+rtkit
+
+# --- Power / memory ---
 zram-generator
+power-profiles-daemon
+
+# --- Hardening helpers (lean) ---
 ufw
-apparmor
-git
-curl
-wget
-htop
+
+# --- Virtualization guests (live ISO convenience) ---
+qemu-guest-agent
+virtualbox-guest-utils
+open-vm-tools

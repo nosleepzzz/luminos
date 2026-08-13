@@ -1,0 +1,64 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate:
+    name: Compile helpers & validate profile
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc make shellcheck
+
+      - name: Compile C helpers
+        run: |
+          chmod +x build-lumin.sh
+          ./build-lumin.sh
+          ./iso/airootfs/usr/bin/lumin-fetch
+          ./iso/airootfs/usr/bin/lumin-mgr --status
+          ./iso/airootfs/usr/bin/lumin-security --audit
+          # Phase 2 stubs must fail closed
+          if ./iso/airootfs/usr/bin/lumin-mgr --run-exe demo.exe; then
+            echo "expected --run-exe to fail until Phase 2" >&2
+            exit 1
+          fi
+          if ./iso/airootfs/usr/bin/lumin-install setup.exe Demo; then
+            echo "expected lumin-install to fail until Phase 2" >&2
+            exit 1
+          fi
+
+      - name: Bash syntax check
+        run: |
+          bash -n build-lumin.sh
+          bash -n tools/build-iso.sh
+          bash -n tools/prepare-airootfs.sh
+          bash -n tools/verify-iso-readiness.sh
+          bash -n tools/make-repo.sh
+          bash -n iso/profiledef.sh
+
+      - name: ShellCheck (scripts)
+        run: |
+          shellcheck -x build-lumin.sh \
+            tools/prepare-airootfs.sh \
+            tools/verify-iso-readiness.sh \
+            tools/build-iso.sh \
+            tools/make-repo.sh
+
+      - name: Validate package list anchors
+        run: |
+          chmod +x tools/verify-iso-readiness.sh
+          ./tools/verify-iso-readiness.sh
+          test -f iso/packages.x86_64
+          for pkg in base linux-cachyos hyprland networkmanager sddm; do
+            grep -Eq "^${pkg}$" iso/packages.x86_64
+          done
+          # Lean Glass: gaming/Windows stacks stay out of base
+          ! grep -Eq '^(wine|winetricks|steam|plasma-desktop)$' iso/packages.x86_64

@@ -1,0 +1,10 @@
+Welcome to LuminOS Glass (pre-alpha)
+
+  Flavor:  Glass (Hyprland, lean package set)
+  Base:    CachyOS / Arch (linux-cachyos)
+  Phase 2: Windows app support not shipped yet
+
+  Try: lumin-fetch
+       lumin-mgr --status
+
+  Docs: https://github.com/nosleepzzz/luminos
