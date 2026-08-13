@@ -15,8 +15,8 @@ echo "  Profile: ${PROJECT_DIR}/iso"
 echo "  Output:  ${OUT_DIR}"
 echo "=========================================================="
 
-"${PROJECT_DIR}/build-lumin.sh"
-"${PROJECT_DIR}/tools/prepare-airootfs.sh"
+bash "${PROJECT_DIR}/build-lumin.sh"
+bash "${PROJECT_DIR}/tools/prepare-airootfs.sh"
 
 if ! command -v mkarchiso >/dev/null 2>&1; then
   echo "ERROR: mkarchiso not found."
