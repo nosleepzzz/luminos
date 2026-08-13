@@ -2,15 +2,22 @@
   "layer": "top",
   "position": "top",
   "height": 28,
-  "modules-left": ["hyprland/workspaces"],
+  "modules-left": ["custom/menu", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["network", "pulseaudio", "battery", "tray"],
+  "custom/menu": {
+    "format": " LuminOS ",
+    "tooltip-format": "Open app menu (also Alt+D)",
+    "on-click": "wofi --show drun",
+    "on-click-right": "foot"
+  },
   "clock": {
-    "format": "{:%a %d %b  %H:%M}"
+    "format": "{:%a %d %b  %H:%M}",
+    "on-click": "wofi --show drun"
   },
   "battery": {
     "format": "{capacity}% {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["", "", "", "", ""]
   },
   "network": {
     "format-wifi": "{essid}",
