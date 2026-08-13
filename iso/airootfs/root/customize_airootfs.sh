@@ -30,9 +30,17 @@ cat >/etc/environment <<'EOF'
 WLR_RENDERER_ALLOW_SOFTWARE=1
 WLR_NO_HARDWARE_CURSORS=1
 WLR_RENDERER=pixman
+LIBGL_ALWAYS_SOFTWARE=1
+GALLIUM_DRIVER=llvmpipe
+AQ_NO_MODIFIERS=1
 EOF
 
 chmod 755 /usr/local/bin/lumin-hyprland 2>/dev/null || true
+# Keep skel home in sync for live user
+if [[ -d /etc/skel && -d /home/lumin ]]; then
+  cp -a /etc/skel/. /home/lumin/
+  chown -R lumin:lumin /home/lumin
+fi
 
 # Rescue: autologin on tty2 so VMs can always recover without SDDM
 mkdir -p /etc/systemd/system/getty@tty2.service.d

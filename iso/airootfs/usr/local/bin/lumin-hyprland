@@ -1,10 +1,23 @@
 #!/bin/bash
-# Hyprland launcher with VirtualBox-safe software rendering defaults
+# VM-safe Hyprland entrypoint — always use start-hyprland (never bare Hyprland).
 set -euo pipefail
+
+export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-Hyprland}"
+
+# wlroots / mesa software path (VirtualBox without working GL)
 export WLR_RENDERER_ALLOW_SOFTWARE="${WLR_RENDERER_ALLOW_SOFTWARE:-1}"
 export WLR_NO_HARDWARE_CURSORS="${WLR_NO_HARDWARE_CURSORS:-1}"
-# pixman is slow but works without GPU/GL in VMs
 export WLR_RENDERER="${WLR_RENDERER:-pixman}"
-export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=Hyprland
+export LIBGL_ALWAYS_SOFTWARE="${LIBGL_ALWAYS_SOFTWARE:-1}"
+export GALLIUM_DRIVER="${GALLIUM_DRIVER:-llvmpipe}"
+
+# Aquamarine (newer Hyprland) — be permissive in VMs
+export AQ_NO_MODIFIERS="${AQ_NO_MODIFIERS:-1}"
+
+if command -v start-hyprland >/dev/null 2>&1; then
+  exec start-hyprland "$@"
+fi
+
+# Fallback for older packaging
 exec Hyprland "$@"
