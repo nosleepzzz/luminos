@@ -7,7 +7,7 @@ BIN_DIR="./iso/airootfs/usr/bin"
 mkdir -p "${BIN_DIR}"
 
 echo "=========================================================="
-echo "    🌟 Compiling LuminOS Binaries & Gaming Engine         "
+echo "    🌟 Compiling LuminOS Binaries & Installer Engine      "
 echo "=========================================================="
 
 echo "==> Compiling Lumin Fetch Utility..."
@@ -25,11 +25,14 @@ gcc -O3 -Wall src/lumin-security.c -o "${BIN_DIR}/lumin-security"
 echo "==> Compiling Lumin Gaming & Steam Engine..."
 gcc -O3 -Wall src/lumin-game.c -o "${BIN_DIR}/lumin-game"
 
+echo "==> Compiling Lumin One-Click App Installer Helper..."
+gcc -O3 -Wall src/lumin-install.c -o "${BIN_DIR}/lumin-install"
+
 echo "==> Creating system symlinks..."
 ln -sf lumin-mgr "${BIN_DIR}/lumin" 2>/dev/null || true
 
 chmod +x ${BIN_DIR}/*
 
 echo "=========================================================="
-echo "✅ LuminOS Binaries & Gaming Engine Ready!"
+echo "✅ LuminOS Binaries & One-Click Installer Ready!"
 echo "=========================================================="
