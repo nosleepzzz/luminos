@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuminOS - Universal Ultra-Lightweight OS (Live Demo)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- macOS Top Menu Bar -->
+  <header id="mac-menubar">
+    <div class="menu-left">
+      <button class="mac-logo-btn" id="apple-menu-btn" title="Lumin Menu">
+        <img src="assets/lumin-logo.jpg" class="menu-logo-img" alt="LuminOS" />
+      </button>
+      <span class="app-name" id="current-app-name">LuminOS</span>
+      <div class="menu-items">
+        <span id="flavor-label">Flavor: 🍏 Glass Edition</span>
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Help</span>
+      </div>
+    </div>
+
+    <div class="menu-right">
+      <div class="status-item" id="battery-status" title="Battery & Power Profile">
+        <span class="icon">⚡</span>
+        <span class="val">94% (AC)</span>
+      </div>
+      <div class="status-item" id="ram-status" title="Lumin Idle Memory Footprint">
+        <span class="val" id="idle-ram-val">RAM ~420 MB</span>
+      </div>
+      <div class="status-item" id="wifi-status" title="Wi-Fi">
+        <span class="icon">📶</span>
+      </div>
+      <button class="status-item btn-control-center" id="btn-control-center" title="Control Center">
+        <span class="icon">🎛️</span>
+      </button>
+      <div class="status-item clock" id="mac-clock">Tue Aug 12 11:00 PM</div>
+    </div>
+  </header>
+
+  <!-- Control Center Popover -->
+  <div id="control-center-popover" class="mac-popover hidden">
+    <div class="cc-grid">
+      <div class="cc-tile active" id="tile-wifi">
+        <div class="cc-icon">📶</div>
+        <div class="cc-info">
+          <div class="title">Wi-Fi</div>
+          <div class="sub">Lumin-5G</div>
+        </div>
+      </div>
+
+      <div class="cc-tile active" id="tile-bt">
+        <div class="cc-icon">🎧</div>
+        <div class="cc-info">
+          <div class="title">Bluetooth</div>
+          <div class="sub">AirPods Max</div>
+        </div>
+      </div>
+
+      <div class="cc-tile active" id="tile-power">
+        <div class="cc-icon">🔋</div>
+        <div class="cc-info">
+          <div class="title">Battery Saver</div>
+          <div class="sub">lumin-powerd (Auto)</div>
+        </div>
+      </div>
+
+      <div class="cc-tile" id="tile-zram">
+        <div class="cc-icon">⚡</div>
+        <div class="cc-info">
+          <div class="title">ZRAM Swap</div>
+          <div class="sub">ZSTD 2.5x Target</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cc-slider-group">
+      <div class="slider-row">
+        <span>☀️ Brightness</span>
+        <input type="range" min="10" max="100" value="85" id="slider-brightness" />
+      </div>
+      <div class="slider-row">
+        <span>🔊 Volume</span>
+        <input type="range" min="0" max="100" value="70" id="slider-volume" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop Workspace Area -->
+  <main id="desktop">
+    <!-- Window 1: Terminal -->
+    <div class="window mac-window focused" id="win-terminal" style="top: 60px; left: 80px; width: 680px; height: 440px;">
+      <div class="window-header">
+        <div class="traffic-lights">
+          <button class="light red close" data-close="win-terminal" title="Close"><span>×</span></button>
+          <button class="light yellow min" title="Minimize"><span>-</span></button>
+          <button class="light green max" title="Expand"><span>+</span></button>
+        </div>
+        <div class="window-title">
+          lumin@laptop — zsh — 80×24
+        </div>
+      </div>
+      <div class="window-body terminal-body">
+        <div id="terminal-output">
+          <div class="term-line welcome-msg">
+            <span class="highlight">Welcome to LuminOS v1.0 (Universal Performance Linux)</span>
+            <br>Ultra-light RAM footprint starting &lt; 280 MB | Type <span class="cmd-keyword">'lumin-fetch'</span> or <span class="cmd-keyword">'help'</span>.
+          </div>
+        </div>
+        <div class="terminal-input-line">
+          <span class="prompt">lumin@laptop ~$</span>
+          <input type="text" id="term-input" autocomplete="off" spellcheck="false" autofocus />
+        </div>
+      </div>
+    </div>
+
+    <!-- Window 2: Lumin Control Center GUI & Flavor Switcher -->
+    <div class="window mac-window" id="win-lumin-mgr" style="top: 90px; left: 360px; width: 620px; height: 480px;">
+      <div class="window-header">
+        <div class="traffic-lights">
+          <button class="light red close" data-close="win-lumin-mgr"><span>×</span></button>
+          <button class="light yellow min"><span>-</span></button>
+          <button class="light green max"><span>+</span></button>
+        </div>
+        <div class="window-title">Lumin System Control & Flavor Switcher</div>
+      </div>
+      <div class="window-body">
+        <div class="mac-banner">
+          <div class="mac-banner-icon">🌟</div>
+          <div class="mac-banner-info">
+            <h2>LuminOS Universal Edition</h2>
+            <p>Target: Universal (Laptops, PCs, Gaming, Handhelds)</p>
+          </div>
+        </div>
+
+        <div class="pref-card">
+          <h3>🌟 Switch LuminOS Flavor</h3>
+          <p>Test live desktop profiles for different hardware targets.</p>
+          <div class="button-row">
+            <button class="mac-btn primary" id="btn-flavor-glass">🍏 Glass</button>
+            <button class="mac-btn" id="btn-flavor-lite">⚡ Lite (&lt;280MB)</button>
+            <button class="mac-btn" id="btn-flavor-game">🎮 GameDeck</button>
+            <button class="mac-btn" id="btn-flavor-work">🏢 Workstation</button>
+          </div>
+        </div>
+
+        <div class="pref-card" style="margin-top: 14px;">
+          <h3>🚀 Sandboxed Windows Execution (Proton-Lumin)</h3>
+          <p>Execute Windows .exe binaries inside unprivileged Bubblewrap (<code>bwrap</code>) container sandbox.</p>
+          <div class="input-group">
+            <input type="text" id="exe-input" value="OfficeSetup.exe" />
+            <button class="mac-btn primary" id="btn-run-exe">Launch .EXE</button>
+          </div>
+          <div id="exe-output-status" class="status-msg"></div>
+        </div>
+
+        <div class="pref-card" style="margin-top: 14px;">
+          <h3>🔋 Power Daemon (lumin-powerd)</h3>
+          <div class="button-row">
+            <button class="mac-btn" id="btn-bat-mode">Battery Saver Mode</button>
+            <button class="mac-btn primary" id="btn-ac-mode">AC Performance Mode</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Window 3: DistroWatch Studio -->
+    <div class="window mac-window" id="win-torrent-studio" style="top: 150px; left: 180px; width: 640px; height: 400px;">
+      <div class="window-header">
+        <div class="traffic-lights">
+          <button class="light red close" data-close="win-torrent-studio"><span>×</span></button>
+          <button class="light yellow min"><span>-</span></button>
+          <button class="light green max"><span>+</span></button>
+        </div>
+        <div class="window-title">DistroWatch Release Studio</div>
+      </div>
+      <div class="window-body">
+        <textarea class="code-editor" readonly>ISO Name:     lumin-os-v1.0-x86_64.iso
+Architecture: x86_64 Universal ISO (4 Official Flavors)
+SHA256:       1982a4d0d84f8beb1767f6616229f85d44c2827b64bdbfb260ee12fa1109e0e
+Magnet Link:  magnet:?xt=urn:btih:6e2ceccb5ec5574f791d45b63c940cff20550f9a&dn=lumin-os-v1.0-x86_64.iso
+Trackers:
+  - udp://tracker.opentrackr.org:1337/announce
+  - udp://open.stealth.si:80/announce</textarea>
+      </div>
+    </div>
+  </main>
+
+  <!-- macOS Floating Glass Dock -->
+  <div id="mac-dock-container">
+    <footer id="mac-dock">
+      <div class="dock-item active" data-open="win-terminal" title="Terminal">
+        <div class="icon">💻</div>
+        <div class="dot"></div>
+      </div>
+      <div class="dock-item active" data-open="win-lumin-mgr" title="Lumin Control Center">
+        <div class="icon">🌟</div>
+        <div class="dot"></div>
+      </div>
+      <div class="dock-item" data-open="win-torrent-studio" title="DistroWatch Studio">
+        <div class="icon">📡</div>
+        <div class="dot"></div>
+      </div>
+      <div class="dock-divider"></div>
+      <div class="dock-item" id="dock-trash" title="Trash">
+        <div class="icon">🗑️</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
