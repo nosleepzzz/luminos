@@ -17,17 +17,21 @@ echo "=========================================================="
 # 1. Recompile C binaries
 "${PROJECT_DIR}/build-lumin.sh"
 
-# 2. Run Archiso build command (if mkarchiso is installed)
-if command -v mkarchiso &> /dev/null; then
-    echo "==> Building ISO image with mkarchiso..."
-    sudo mkarchiso -v -w /tmp/lumin-archiso-tmp -o "${OUT_DIR}" "${PROJECT_DIR}/iso"
-else
-    echo "⚠️ 'mkarchiso' tool not found. Creating placeholder ISO target structure..."
-    echo "LuminOS Live ISO Image v1.0.0-rc1" > "${OUT_DIR}/lumin-os-v1.0-x86_64.iso"
-    sha256sum "${OUT_DIR}/lumin-os-v1.0-x86_64.iso" > "${OUT_DIR}/lumin-os-v1.0-x86_64.iso.sha256"
+# 2. Check for Archiso toolchain
+if ! command -v mkarchiso &> /dev/null; then
+    echo "❌ ERROR: 'mkarchiso' toolchain is not installed."
+    echo "   Building a real bootable 1.8 GB ISO image requires Archiso tools and root privileges."
+    echo ""
+    echo "👉 Please run this command in your terminal to install dependencies & build the ISO:"
+    echo "   sudo pacman -S --noconfirm archiso xorriso squashfs-tools && sudo mkarchiso -v -w /tmp/lumin-tmp -o ./out ./iso"
+    echo ""
+    exit 1
 fi
 
+echo "==> Compiling full bootable ISO image with mkarchiso..."
+sudo mkarchiso -v -w /tmp/lumin-archiso-tmp -o "${OUT_DIR}" "${PROJECT_DIR}/iso"
+
 echo "=========================================================="
-echo "✅ ISO Generation Complete!"
+echo "✅ Real ISO Generation Complete!"
 echo "📍 ISO Location: ${OUT_DIR}/lumin-os-v1.0-x86_64.iso"
 echo "=========================================================="
