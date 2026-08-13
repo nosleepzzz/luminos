@@ -1,0 +1,12 @@
+NAME="LuminOS"
+PRETTY_NAME="LuminOS v1.0.0-rc1 (Universal Performance Release)"
+ID=luminos
+ID_LIKE=arch
+BUILD_ID=20260812
+ANSI_COLOR="38;2;255;184;0"
+HOME_URL="https://nosleepzzz.github.io/luminos/"
+DOCUMENTATION_URL="https://github.com/nosleepzzz/luminos"
+SUPPORT_URL="https://github.com/nosleepzzz/luminos/issues"
+BUG_REPORT_URL="https://github.com/nosleepzzz/luminos/issues"
+PRIVACY_POLICY_URL="https://nosleepzzz.github.io/luminos/"
+LOGO=lumin-logo
