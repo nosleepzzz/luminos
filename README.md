@@ -8,7 +8,7 @@
 
 **LuminOS** is a 100% unique Arch Linux-based universal operating system fork engineered for high speed, zero-trust security, battery longevity, and low resource overhead across all hardware (Desktops, Laptops, Low-Spec PCs, and Handhelds).
 
-- **Repository**: [https://github.com/sentinel-services/luminos](https://github.com/sentinel-services/luminos)
+- **Repository**: [https://github.com/nosleepzzz/luminos](https://github.com/nosleepzzz/luminos)
 - **Idle Memory Footprint**: **~280 MB - 420 MB RAM**
 - **Kernel Scheduler**: `BORE` (Burst-Oriented Response Enhancer) + `scx_lavd` (Latency-Aware Virtual Deadline eBPF Scheduler)
 - **Memory Compression**: ZRAM ZSTD with a 2.5x - 3.0x compression ratio target

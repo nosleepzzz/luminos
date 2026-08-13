@@ -21,7 +21,7 @@ git init
 git checkout -b gh-pages
 git add .
 git commit -m "Deploy LuminOS Landing Page"
-git remote add origin git@github.com:sentinel-services/luminos.git
+git remote add origin git@github.com:nosleepzzz/luminos.git
 git push -u origin gh-pages --force
 ```
 
@@ -57,7 +57,7 @@ Linux ISO images (~1.8 GB) require high-bandwidth distribution nodes. Here are t
 
 ## 📑 Summary: Recommended Stack for Launch
 
-1. **Website**: Cloudflare Pages / GitHub Pages (`https://sentinel-services.github.io/luminos/`)
+1. **Website**: Cloudflare Pages / GitHub Pages (`https://nosleepzzz.github.io/luminos/`)
 2. **ISO Direct Download**: SourceForge + GitHub Releases
 3. **P2P Distribution**: BitTorrent Magnet link seeded via open trackers (`opentrackr`)
 4. **DistroWatch Submission**: SourceForge ISO link submitted to DistroWatch.
