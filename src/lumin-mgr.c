@@ -1,15 +1,15 @@
-/* LuminOS - Laptop Control Center & Windows Translation Runner */
+/* LuminOS - Universal System Control Center & Windows Translation Runner */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 void show_status() {
     printf("========================================================\n");
-    printf("     🌟 LuminOS - Laptop System Control Center          \n");
+    printf("     🌟 LuminOS - Universal System Control Center       \n");
     printf("========================================================\n");
-    printf("  • Distro Name:     LuminOS (x86_64 Laptop Edition)\n");
-    printf("  • RAM Footprint:   ~420 MB Idle (ZRAM ZSTD 2.5x Target)\n");
-    printf("  • Battery Daemon:  lumin-powerd (Auto AC/BAT Switch)\n");
+    printf("  • Distro Name:     LuminOS (x86_64 Universal Edition)\n");
+    printf("  • RAM Footprint:   ~280 MB - 420 MB Idle (ZRAM ZSTD Target)\n");
+    printf("  • Power Daemon:    lumin-powerd (Auto AC/BAT Switch)\n");
     printf("  • Security Engine: Bubblewrap Sandbox (lumin-security)\n");
     printf("  • Windows Killer:  Built-in Wine-GE / Proton-Lumin EXE runner\n");
     printf("========================================================\n");

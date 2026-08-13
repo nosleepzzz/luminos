@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=LuminOS Windows Application Runner
+Comment=Run Windows applications securely in LuminOS Bubblewrap sandbox
+Exec=lumin-security --sandbox %f
+Icon=wine
+MimeType=application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;
+Terminal=false
+Categories=System;Utility;
