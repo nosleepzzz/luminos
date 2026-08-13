@@ -109,4 +109,4 @@ sudo ./tools/build-iso.sh
 - **GitHub Direct ISO**: [Download `lumin-os-v1.0.0-rc1-x86_64.iso` (1.5 GB)](https://github.com/nosleepzzz/luminos/releases/download/v1.0.0-rc1/lumin-os-v1.0.0-rc1-x86_64.iso)
 - **SourceForge Mirror**: [LuminOS SourceForge Downloads](https://sourceforge.net/projects/luminos/files/)
 - **Release Tag**: `v1.0.0-rc1`
-- **SHA256 Checksum**: `87f7b78fe31f8c5ed1d3ae3d2384efae9e7a4f3724503c4507c84574367e270a`
+- **SHA256 Checksum**: `4036617abf834b692aa55e0ebd739b2265dd57a3dcf53233c817659121d5f248`
