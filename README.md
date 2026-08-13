@@ -8,8 +8,9 @@
 
 **LuminOS** is a 100% unique Arch Linux-based universal operating system engineered for high speed, zero-trust security, battery longevity, and low resource overhead across all hardware (Desktops, Laptops, Low-Spec PCs, Handhelds, and Gaming Rigs).
 
-- **Repository**: [https://github.com/nosleepzzz/luminos](https://github.com/nosleepzzz/luminos)
+- **GitHub Repository**: [https://github.com/nosleepzzz/luminos](https://github.com/nosleepzzz/luminos)
 - **Live Website**: [https://nosleepzzz.github.io/luminos/](https://nosleepzzz.github.io/luminos/)
+- **SourceForge Mirror**: [https://sourceforge.net/projects/luminos/](https://sourceforge.net/projects/luminos/)
 - **Idle Memory Footprint**: **< 280 MB - 420 MB RAM**
 - **Kernel Scheduler**: `BORE` (Burst-Oriented Response Enhancer) + `scx_lavd` (Latency-Aware Virtual Deadline eBPF Scheduler)
 - **Memory Compression**: ZRAM ZSTD with a 2.5x - 3.0x compression ratio target
@@ -61,7 +62,6 @@ lumin-install game_setup.exe "Cyberpunk 2077"
 
 ```
 lumin-os/
-├── LAUNCH_ANNOUNCEMENT.md              # 📢 Official Press Release & Benchmarks
 ├── README.md                           # 📄 Master Technical Readme
 ├── assets/
 │   ├── lumin-logo.jpg                  # 🖼️ Official LuminOS Logo Emblem
@@ -82,7 +82,7 @@ lumin-os/
 │   └── lumin-install.c                 # One-click app installer helper
 └── tools/                              # 🛠️ Build & Audit Tooling
     ├── build-iso.sh                    # Master ISO builder
-    ├── make-torrent.sh                 # BitTorrent torrent & magnet generator
+    ├── make-repo.sh                    # Pacman package repository generator
     └── verify-iso-readiness.sh         # ISO compliance auditor
 ```
 
@@ -104,12 +104,9 @@ sudo ./tools/build-iso.sh
 
 ---
 
-## 📥 Latest Release & BitTorrent Download
+## 📥 Direct Downloads & Mirrors
 
+- **GitHub Direct ISO**: [Download `lumin-os-v1.0.0-rc1-x86_64.iso` (1.5 GB)](https://github.com/nosleepzzz/luminos/releases/download/v1.0.0-rc1/lumin-os-v1.0.0-rc1-x86_64.iso)
+- **SourceForge Mirror**: [LuminOS SourceForge Downloads](https://sourceforge.net/projects/luminos/files/)
 - **Release Tag**: `v1.0.0-rc1`
 - **SHA256 Checksum**: `87f7b78fe31f8c5ed1d3ae3d2384efae9e7a4f3724503c4507c84574367e270a`
-- **BTIH Infohash**: `bd2e4651c64cb624d9b88c3ee78244690e9815cc`
-- **Magnet Link**:
-  ```
-  magnet:?xt=urn:btih:bd2e4651c64cb624d9b88c3ee78244690e9815cc&dn=lumin-os-v1.0.0-rc1-x86_64.iso&tr=udp://tracker.opentrackr.org:1337/announce&tr=udp://open.stealth.si:80/announce&tr=udp://tracker.torrent.eu.org:451/announce&tr=udp://tracker.dler.org:6969/announce
-  ```
