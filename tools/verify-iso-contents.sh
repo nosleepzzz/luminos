@@ -56,6 +56,8 @@ unsquashfs -d "${root}" "${sfs}" \
   home/lumin/.config/hypr/hyprland.conf \
   home/lumin/.config/waybar/config \
   home/lumin/.config/wofi/config \
+  home/lumin/.config/fuzzel/fuzzel.ini \
+  usr/local/bin/lumin-menu \
   >/dev/null
 
 check "customize_airootfs ran" "test -f '${root}/etc/luminos-live-ready'"
@@ -72,7 +74,10 @@ check "hypr config opens foot on start" "grep -q 'exec-once = foot' '${root}/hom
 check "hypr welcome notification" "grep -q 'Welcome to LuminOS Glass' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "hypr config has no pseudotile" "! grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "waybar has LuminOS menu button" "grep -q 'custom/menu' '${root}/home/lumin/.config/waybar/config'"
-check "wofi config present" "test -f '${root}/home/lumin/.config/wofi/config'"
+check "lumin-menu launcher present" "test -x '${root}/usr/local/bin/lumin-menu'"
+check "fuzzel config present" "test -f '${root}/home/lumin/.config/fuzzel/fuzzel.ini'"
+check "thunar installed" "test -x '${root}/usr/bin/thunar'"
+check "hypr opens menu via script" "grep -q 'lumin-menu' '${root}/home/lumin/.config/hypr/hyprland.conf'"
 check "lumin password is set" "awk -F: '\$1==\"lumin\" && length(\$2)>0 {found=1} END{exit !found}' '${root}/etc/shadow'"
 check "root password is set" "awk -F: '\$1==\"root\" && length(\$2)>0 {found=1} END{exit !found}' '${root}/etc/shadow'"
 

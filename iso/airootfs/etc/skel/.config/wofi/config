@@ -1,7 +1,6 @@
 width=520
 height=360
 location=center
-show=drun
 prompt=Search apps
 filter_rate=100
 allow_markup=true

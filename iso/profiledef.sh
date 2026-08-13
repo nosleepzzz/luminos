@@ -30,4 +30,8 @@ file_permissions=(
   ["/usr/bin/lumin-game"]="0:0:755"
   ["/usr/bin/lumin-install"]="0:0:755"
   ["/usr/local/bin/lumin-hyprland"]="0:0:755"
+  ["/usr/local/bin/lumin-session-init"]="0:0:755"
+  ["/usr/local/bin/lumin-menu"]="0:0:755"
+  ["/usr/local/bin/lumin-terminal"]="0:0:755"
+  ["/usr/local/bin/lumin-files"]="0:0:755"
 )

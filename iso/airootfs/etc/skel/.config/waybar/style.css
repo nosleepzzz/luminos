@@ -24,6 +24,19 @@ window#waybar {
   color: #ffffff;
 }
 
+#custom-files {
+  background: rgba(255, 255, 255, 0.06);
+  color: #dddddd;
+  padding: 0 10px;
+  margin: 4px 4px 4px 0;
+  border-radius: 6px;
+}
+
+#custom-files:hover {
+  background: rgba(230, 184, 0, 0.22);
+  color: #ffffff;
+}
+
 #workspaces button {
   padding: 0 6px;
   color: #888888;

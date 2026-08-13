@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LuminOS Files
+Comment=Browse files
+Exec=/usr/local/bin/lumin-files
+Icon=system-file-manager
+Terminal=false
+Type=Application
+Categories=System;FileManager;

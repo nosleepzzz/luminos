@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=LuminOS App Menu
+Comment=Launch applications
+Exec=/usr/local/bin/lumin-menu
+Icon=luminos
+Terminal=false
+Type=Application
+Categories=Utility;

@@ -1,0 +1,10 @@
+#!/bin/bash
+set -euo pipefail
+
+uid="$(id -u)"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${uid}}"
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+
+/usr/local/bin/lumin-session-init
+exec /usr/bin/foot

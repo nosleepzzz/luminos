@@ -87,6 +87,9 @@ ln -sfn /dev/null "${SYS}/systemd-firstboot.service"
 chmod 750 "${AIROOTFS}/etc/sudoers.d" 2>/dev/null || true
 chmod 440 "${AIROOTFS}/etc/sudoers.d/g_wheel" 2>/dev/null || true
 chmod 755 "${AIROOTFS}/root/customize_airootfs.sh" 2>/dev/null || true
+for _bin in lumin-hyprland lumin-session-init lumin-menu lumin-terminal lumin-files; do
+  chmod 755 "${AIROOTFS}/usr/local/bin/${_bin}" 2>/dev/null || true
+done
 
 if [[ -e /usr/share/zoneinfo/UTC ]]; then
   ln -sfn /usr/share/zoneinfo/UTC "${AIROOTFS}/etc/localtime"

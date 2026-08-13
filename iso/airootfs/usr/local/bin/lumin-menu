@@ -1,0 +1,31 @@
+#!/bin/bash
+# App launcher for waybar clicks and Alt+D — fuzzel first, wofi fallback.
+set -euo pipefail
+
+uid="$(id -u)"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${uid}}"
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=Hyprland
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/bin"
+
+/usr/local/bin/lumin-session-init
+
+log="${HOME}/.cache/lumin-launch.log"
+: >"${log}"
+
+if command -v fuzzel >/dev/null 2>&1; then
+  if fuzzel >>"${log}" 2>&1; then
+    exit 0
+  fi
+fi
+
+if command -v wofi >/dev/null 2>&1; then
+  if wofi --show drun --allow-images --prompt "Applications" \
+      --conf "${HOME}/.config/wofi/config" \
+      --style "${HOME}/.config/wofi/style.css" >>"${log}" 2>&1; then
+    exit 0
+  fi
+fi
+
+notify-send -a LuminOS "Launcher failed" "See ${log}" 2>/dev/null || true
+/usr/bin/foot -e /usr/bin/bash -lc 'echo "Launch failed. Log:"; cat ~/.cache/lumin-launch.log; echo; echo "Installed apps:"; ls /usr/share/applications/*.desktop 2>/dev/null | head -n 20; exec bash'

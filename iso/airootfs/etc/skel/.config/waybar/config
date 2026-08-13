@@ -3,36 +3,39 @@
   "position": "top",
   "height": 30,
   "spacing": 4,
-  "modules-left": ["custom/menu", "hyprland/workspaces"],
+  "modules-left": ["custom/menu", "custom/files", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["network", "pulseaudio", "battery", "tray"],
   "custom/menu": {
     "format": "  LuminOS  ",
-    "tooltip-format": "App menu (Alt+D) · Terminal (Alt+Return)",
-    "on-click": "wofi --show drun",
-    "on-click-right": "foot"
+    "tooltip-format": "Applications (Alt+D)",
+    "on-click": "/usr/local/bin/lumin-menu"
+  },
+  "custom/files": {
+    "format": " Files ",
+    "tooltip-format": "File manager (Alt+E)",
+    "on-click": "/usr/local/bin/lumin-files"
   },
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "<tt>{:%Y-%m-%d %H:%M:%S}</tt>",
-    "on-click": "wofi --show drun"
+    "tooltip-format": "Open terminal (right-click)",
+    "on-click": "/usr/local/bin/lumin-menu",
+    "on-click-right": "/usr/local/bin/lumin-terminal"
   },
   "battery": {
     "format": "{capacity}%",
     "format-charging": "chg {capacity}%",
-    "format-plugged": "plug {capacity}%",
-    "format-alt": "{time} {capacity}%"
+    "format-plugged": "plug {capacity}%"
   },
   "network": {
     "format-wifi": "wifi {essid}",
     "format-ethernet": "eth",
-    "format-disconnected": "offline",
-    "tooltip-format": "{ifname}: {ipaddr}/{cidr}"
+    "format-disconnected": "offline"
   },
   "pulseaudio": {
     "format": "vol {volume}%",
     "format-muted": "muted",
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    "on-click": "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
   },
   "tray": {
     "spacing": 8

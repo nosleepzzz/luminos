@@ -20,6 +20,7 @@ wget
 htop
 rsync
 openssh
+dbus
 
 # --- Kernel & firmware (CachyOS) ---
 linux-cachyos
@@ -68,10 +69,13 @@ libva-mesa-driver
 hyprland
 xdg-desktop-portal-hyprland
 waybar
+fuzzel
 wofi
 foot
 dunst
 libnotify
+thunar
+adw-icon-theme
 grim
 slurp
 swaybg

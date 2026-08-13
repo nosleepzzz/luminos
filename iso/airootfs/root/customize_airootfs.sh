@@ -31,18 +31,22 @@ AQ_NO_MODIFIERS=1
 EOF
 
 install -d -m 0755 /usr/local/bin
-chmod 755 /usr/local/bin/lumin-hyprland
-test -x /usr/local/bin/lumin-hyprland
-test -f /usr/share/wayland-sessions/luminos-glass.desktop
+for _bin in lumin-hyprland lumin-session-init lumin-menu lumin-terminal lumin-files; do
+  chmod 755 "/usr/local/bin/${_bin}"
+  test -x "/usr/local/bin/${_bin}"
+done
+command -v fuzzel >/dev/null
+command -v thunar >/dev/null
 command -v start-hyprland >/dev/null
+test -f /usr/share/wayland-sessions/luminos-glass.desktop
 grep -q 'Session=luminos-glass' /etc/sddm.conf.d/luminos.conf
 grep -q 'Current=luminos' /etc/sddm.conf.d/luminos.conf
-grep -q 'bind = ALT, Return' /etc/skel/.config/hypr/hyprland.conf
-grep -q 'custom/menu' /etc/skel/.config/waybar/config
+grep -q 'bind = ALT, E' /etc/skel/.config/hypr/hyprland.conf
+grep -q 'lumin-menu' /etc/skel/.config/waybar/config
 test -f /usr/share/sddm/themes/luminos/Main.qml
-test -f /usr/share/sddm/themes/luminos/background.jpg
 test -f /usr/share/pixmaps/luminos.svg
 ! grep -qE '^[[:space:]]*pseudotile[[:space:]]*=' /etc/skel/.config/hypr/hyprland.conf
+loginctl enable-linger lumin 2>/dev/null || true
 
 # Live user home = skel (waybar menu + hypr config)
 usermod -aG seat,video,input,render lumin 2>/dev/null || true

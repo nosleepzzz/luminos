@@ -1,0 +1,25 @@
+#!/bin/bash
+# Start user session services needed for audio, portals, and app launchers.
+set -euo pipefail
+
+uid="$(id -u)"
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-/run/user/${uid}}"
+export XDG_SESSION_TYPE="${XDG_SESSION_TYPE:-wayland}"
+export XDG_CURRENT_DESKTOP="${XDG_CURRENT_DESKTOP:-Hyprland}"
+mkdir -p "${XDG_RUNTIME_DIR}" "${HOME}/.cache"
+
+if [[ ! -S "${XDG_RUNTIME_DIR}/bus" ]]; then
+  eval "$(/usr/bin/dbus-launch --sh-syntax --exit-with-session)"
+fi
+
+if /usr/bin/systemctl --user show-environment >/dev/null 2>&1; then
+  /usr/bin/systemctl --user import-environment \
+    WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_TYPE XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+  /usr/bin/systemctl --user start pipewire.service pipewire-pulse.service wireplumber.service \
+    2>/dev/null || true
+  /usr/bin/systemctl --user start xdg-desktop-portal-hyprland.service xdg-desktop-portal-gtk.service \
+    2>/dev/null || true
+else
+  /usr/bin/pgrep -x pipewire >/dev/null 2>&1 || /usr/bin/pipewire &
+  /usr/bin/pgrep -x wireplumber >/dev/null 2>&1 || /usr/bin/wireplumber &
+fi
