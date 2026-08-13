@@ -50,11 +50,36 @@ fi
 rm -rf "${WORK_DIR}"
 mkarchiso -v -w "${WORK_DIR}" -o "${OUT_DIR}" "${PROJECT_DIR}/iso"
 
+# Fail closed: refuse to ship an ISO that still boots into systemd-firstboot
+iso_path="$(ls -1t "${OUT_DIR}"/luminos-glass-*.iso 2>/dev/null | head -n1 || true)"
+if [[ -z "${iso_path}" ]]; then
+  echo "ERROR: no ISO produced under ${OUT_DIR}"
+  exit 1
+fi
+verify_mnt="$(mktemp -d)"
+cleanup_verify() { umount "${verify_mnt}" 2>/dev/null || true; rmdir "${verify_mnt}" 2>/dev/null || true; }
+trap cleanup_verify EXIT
+mount -o loop,ro "${iso_path}" "${verify_mnt}"
+if ! grep -q 'systemd.firstboot=off' "${verify_mnt}/boot/grub/grub.cfg"; then
+  echo "ERROR: built ISO grub.cfg is missing systemd.firstboot=off"
+  echo "       Refusing to treat this ISO as usable. Check iso/grub/grub.cfg in git."
+  exit 1
+fi
+if ! grep -q 'luminos-console' "${verify_mnt}/boot/grub/grub.cfg"; then
+  echo "ERROR: built ISO grub.cfg is missing the console boot entry"
+  exit 1
+fi
+echo "==> ISO verification OK: $(basename "${iso_path}") has firstboot=off + console entry"
+cleanup_verify
+trap - EXIT
+
 # mkarchiso runs as root; hand artifacts back to the invoking user when possible
 if [[ -n "${SUDO_USER:-}" && "${SUDO_USER}" != "root" ]]; then
   chown -R "${SUDO_USER}:${SUDO_USER}" "${OUT_DIR}" "${PROJECT_DIR}/.build" 2>/dev/null || true
 fi
 
 echo "=========================================================="
-echo "  ISO build finished. Check ${OUT_DIR}"
+echo "  ISO build finished: ${iso_path}"
+echo "  Live login: user lumin / password lumin  (or autologin)"
+echo "  Before testing: confirm Shared copy is THIS file (new mtime)."
 echo "=========================================================="
