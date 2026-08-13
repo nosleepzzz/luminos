@@ -16,12 +16,12 @@ A comprehensive guide for hosting the **LuminOS Website** and distributing the *
 
 ### Quick Deployment to GitHub Pages:
 ```bash
-cd /home/nosleep/Projects/lumin-os/website
+cd website
 git init
 git checkout -b gh-pages
 git add .
 git commit -m "Deploy LuminOS Landing Page"
-git remote add origin https://github.com/luminos-project/luminos-website.git
+git remote add origin git@github.com:sentinel-services/luminos.git
 git push -u origin gh-pages --force
 ```
 
@@ -57,7 +57,7 @@ Linux ISO images (~1.8 GB) require high-bandwidth distribution nodes. Here are t
 
 ## 📑 Summary: Recommended Stack for Launch
 
-1. **Website**: Cloudflare Pages / GitHub Pages (`https://luminos.org`)
+1. **Website**: Cloudflare Pages / GitHub Pages (`https://sentinel-services.github.io/luminos/`)
 2. **ISO Direct Download**: SourceForge + GitHub Releases
 3. **P2P Distribution**: BitTorrent Magnet link seeded via open trackers (`opentrackr`)
 4. **DistroWatch Submission**: SourceForge ISO link submitted to DistroWatch.
