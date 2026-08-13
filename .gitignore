@@ -1,0 +1,10 @@
+# LuminOS Build Outputs & Temporary Files
+out/*.iso
+out/*.iso.sha256
+out/*.torrent
+out/*.magnet
+/tmp/
+iso/airootfs/usr/bin/lumin-fetch
+iso/airootfs/usr/bin/lumin-mgr
+iso/airootfs/usr/bin/lumin-powerd
+iso/airootfs/usr/bin/lumin-security
