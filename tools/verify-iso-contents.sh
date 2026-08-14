@@ -11,6 +11,11 @@ if ! command -v unsquashfs >/dev/null 2>&1; then
   echo "ERROR: unsquashfs required (pacman -S squashfs-tools)" >&2
   exit 1
 fi
+if [[ "$(id -u)" -ne 0 ]]; then
+  echo "ERROR: ISO verification must run as root (loop mount required)." >&2
+  echo "Run: sudo bash tools/verify-iso-contents.sh ${ISO_PATH}" >&2
+  exit 1
+fi
 
 mnt="$(mktemp -d)"
 root="$(mktemp -d)"
