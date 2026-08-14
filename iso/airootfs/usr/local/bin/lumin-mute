@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle

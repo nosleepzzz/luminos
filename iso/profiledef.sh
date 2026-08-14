@@ -34,4 +34,5 @@ file_permissions=(
   ["/usr/local/bin/lumin-menu"]="0:0:755"
   ["/usr/local/bin/lumin-terminal"]="0:0:755"
   ["/usr/local/bin/lumin-files"]="0:0:755"
+  ["/usr/local/bin/lumin-mute"]="0:0:755"
 )

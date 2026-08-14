@@ -31,7 +31,7 @@ AQ_NO_MODIFIERS=1
 EOF
 
 install -d -m 0755 /usr/local/bin
-for _bin in lumin-hyprland lumin-session-init lumin-menu lumin-terminal lumin-files; do
+for _bin in lumin-hyprland lumin-session-init lumin-menu lumin-terminal lumin-files lumin-mute; do
   chmod 755 "/usr/local/bin/${_bin}"
   test -x "/usr/local/bin/${_bin}"
 done

@@ -3,24 +3,26 @@
   "position": "top",
   "height": 30,
   "spacing": 4,
+  "exclusive": true,
+  "passthrough": false,
   "modules-left": ["custom/menu", "custom/files", "hyprland/workspaces"],
   "modules-center": ["clock"],
   "modules-right": ["network", "pulseaudio", "battery", "tray"],
   "custom/menu": {
     "format": "  LuminOS  ",
     "tooltip-format": "Applications (Alt+D)",
-    "on-click": "/usr/local/bin/lumin-menu"
+    "on-click": "hyprctl dispatch exec /usr/local/bin/lumin-menu"
   },
   "custom/files": {
     "format": " Files ",
     "tooltip-format": "File manager (Alt+E)",
-    "on-click": "/usr/local/bin/lumin-files"
+    "on-click": "hyprctl dispatch exec /usr/local/bin/lumin-files"
   },
   "clock": {
     "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "Open terminal (right-click)",
-    "on-click": "/usr/local/bin/lumin-menu",
-    "on-click-right": "/usr/local/bin/lumin-terminal"
+    "tooltip-format": "Menu (click) · Terminal (right-click)",
+    "on-click": "hyprctl dispatch exec /usr/local/bin/lumin-menu",
+    "on-click-right": "hyprctl dispatch exec /usr/local/bin/lumin-terminal"
   },
   "battery": {
     "format": "{capacity}%",
@@ -35,7 +37,7 @@
   "pulseaudio": {
     "format": "vol {volume}%",
     "format-muted": "muted",
-    "on-click": "/usr/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    "on-click": "hyprctl dispatch exec /usr/local/bin/lumin-mute"
   },
   "tray": {
     "spacing": 8
