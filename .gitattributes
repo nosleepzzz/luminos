@@ -1,0 +1,6 @@
+# Shell scripts must use LF so Linux can execute them directly.
+*.sh text eol=lf
+
+# Archiso / profile scripts
+iso/** text eol=lf
+tools/** text eol=lf
